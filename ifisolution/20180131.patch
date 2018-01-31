@@ -1,0 +1,2160 @@
+### Eclipse Workspace Patch 1.0
+#P addon-apis
+Index: launches/Apis - Generate Documentation.launch
+===================================================================
+RCS file: /home/cvs/addon-apis/launches/Apis - Generate Documentation.launch,v
+retrieving revision 1.3
+diff -u -r1.3 Apis - Generate Documentation.launch
+--- launches/Apis - Generate Documentation.launch	8 Sep 2016 06:32:38 -0000	1.3
++++ launches/Apis - Generate Documentation.launch	31 Jan 2018 11:46:01 -0000
+@@ -15,7 +15,7 @@
+ <stringAttribute key="org.eclipse.debug.ui.target_debug_perspective" value="perspective_default"/>
+ <stringAttribute key="org.eclipse.debug.ui.target_run_perspective" value="perspective_default"/>
+ <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.ant.ui.AntClasspathProvider"/>
+-<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_71"/>
++<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_91"/>
+ <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.eclipse.ant.internal.launching.remote.InternalAntRunner"/>
+ <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="addon-apis"/>
+ <stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="${workspace_loc:/addon-apis/ant/buildDocumentation.xml}"/>
+Index: launches/Apis - Generate Messages.launch
+===================================================================
+RCS file: /home/cvs/addon-apis/launches/Apis - Generate Messages.launch,v
+retrieving revision 1.2
+diff -u -r1.2 Apis - Generate Messages.launch
+--- launches/Apis - Generate Messages.launch	27 Aug 2015 08:28:24 -0000	1.2
++++ launches/Apis - Generate Messages.launch	31 Jan 2018 11:46:01 -0000
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+ <launchConfiguration type="org.eclipse.ant.AntLaunchConfigurationType">
+ <stringAttribute key="org.eclipse.ant.ui.ATTR_BUILD_SCOPE" value="${none}"/>
+-<booleanAttribute key="org.eclipse.ant.ui.DEFAULT_VM_INSTALL" value="false"/>
++<booleanAttribute key="org.eclipse.ant.ui.DEFAULT_VM_INSTALL" value="true"/>
+ <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+ <listEntry value="/addon-apis/ant/generateMessages.xml"/>
+ </listAttribute>
+@@ -15,7 +15,7 @@
+ <stringAttribute key="org.eclipse.debug.ui.target_debug_perspective" value="perspective_default"/>
+ <stringAttribute key="org.eclipse.debug.ui.target_run_perspective" value="perspective_default"/>
+ <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.ant.ui.AntClasspathProvider"/>
+-<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
++<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_91"/>
+ <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.eclipse.ant.internal.launching.remote.InternalAntRunner"/>
+ <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="addon-apis"/>
+ <stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="${workspace_loc:/addon-apis/ant/generateMessages.xml}"/>
+Index: launches/Apis Update addons bundle.launch
+===================================================================
+RCS file: /home/cvs/addon-apis/launches/Apis Update addons bundle.launch,v
+retrieving revision 1.1
+diff -u -r1.1 Apis Update addons bundle.launch
+--- launches/Apis Update addons bundle.launch	26 Nov 2015 03:19:29 -0000	1.1
++++ launches/Apis Update addons bundle.launch	31 Jan 2018 11:46:01 -0000
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+ <launchConfiguration type="org.eclipse.ant.AntLaunchConfigurationType">
+-<booleanAttribute key="org.eclipse.ant.ui.DEFAULT_VM_INSTALL" value="false"/>
++<booleanAttribute key="org.eclipse.ant.ui.DEFAULT_VM_INSTALL" value="true"/>
+ <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+ <listEntry value="/addon-apis/ant/updateAddons.xml"/>
+ </listAttribute>
+@@ -9,7 +9,7 @@
+ </listAttribute>
+ <stringAttribute key="org.eclipse.debug.ui.ATTR_CONSOLE_ENCODING" value="UTF-8"/>
+ <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.ant.ui.AntClasspathProvider"/>
+-<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
++<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_91"/>
+ <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.eclipse.ant.internal.launching.remote.InternalAntRunner"/>
+ <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="addon-apis"/>
+ <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.ant.ui.AntClasspathProvider"/>
+Index: src-tests/test/TestImportFreeFormCaseService.java
+===================================================================
+RCS file: src-tests/test/TestImportFreeFormCaseService.java
+diff -N src-tests/test/TestImportFreeFormCaseService.java
+--- /dev/null	1 Jan 1970 00:00:00 -0000
++++ src-tests/test/TestImportFreeFormCaseService.java	1 Jan 1970 00:00:00 -0000
+@@ -0,0 +1,616 @@
++/*
++ * Copyright Orchestra Networks 2000-2012. All rights reserved.
++ */
++package test;
++
++import java.io.*;
++import java.util.*;
++
++import com.onwbp.adaptation.*;
++import com.onwbp.base.text.*;
++import com.orchestranetworks.addon.apis.bean.*;
++import com.orchestranetworks.addon.apis.binding.*;
++import com.orchestranetworks.addon.apis.common.*;
++import com.orchestranetworks.addon.apis.enumeration.*;
++import com.orchestranetworks.addon.apis.i18n.*;
++import com.orchestranetworks.addon.apis.userservice.importtest.*;
++import com.orchestranetworks.addon.apis.userservice.importtest.importtestcase.*;
++import com.orchestranetworks.service.*;
++
++import common.*;
++import test.report.annotations.*;
++
++/**
++ */
++public final class TestImportFreeFormCaseService extends ApisTestCase
++{
++	@Evolution(Ids = "#29081")
++	public void testImportFreeFormCase() throws ApisException
++	{
++		File sourceFile = new File("./src-tests/resources/archives/ImportTestCaseTemplate.xls");
++		ImportSpreadsheetServiceContext serviceContext = new ImportSpreadsheetServiceContext();
++		serviceContext.setImportSpreadsheetSpec(
++			new ImportSpreadsheetSpec(ImportMode.INSERT_OR_UPDATE, sourceFile));
++		serviceContext.setEntitySelection(new DataSetEntitySelectionImpl(this.apisDataset));
++		ImportSpreadsheetProcedure importTestCaseProcedure = new ImportTestCaseProcedure(
++			serviceContext);
++		ProgrammaticService ps = ProgrammaticService
++			.createForSession(this.session, this.apisDataset.getHome());
++		ps.execute(importTestCaseProcedure);
++		int result = serviceContext.getResult().getNumberOfCreatedRecord(
++			this.apisDataset.getTable(
++				ApisPaths._Apis_TestDriving_TestConfiguration_CampaignDefinition
++					.getPathInSchema()));
++		//check result correct and check creation input output context
++		assertEquals(0, result);
++		result = serviceContext.getResult().getNumberOfCreatedRecord(
++			this.apisDataset.getTable(
++				ApisPaths._Apis_TestDriving_TestConfiguration_Scenario.getPathInSchema()));
++		assertEquals(5, result);
++		//@Reproduce(Issues = "#21938")
++		result = serviceContext.getResult().getNumberOfCreatedRecord(
++			this.apisDataset
++				.getTable(ApisPaths._Apis_TestDriving_TestConfiguration_Step.getPathInSchema()));
++		assertEquals(12, result);
++		//@Reproduce(Issues = "#21594")
++		result = serviceContext.getResult().getNumberOfCreatedRecord(
++			this.apisDataset.getTable(
++				ApisPaths._Apis_TestDriving_TestConfiguration_ScenarioUsesOrderStep
++					.getPathInSchema()));
++		assertEquals(12, result);
++		result = serviceContext.getResult().getNumberOfCreatedRecord(
++			this.apisDataset.getTable(
++				ApisPaths._Apis_TestDriving_TestConfiguration_CampaignDefinitionIncludesOrderScenario
++					.getPathInSchema()));
++		assertEquals(3, result);
++		//@Reproduce(Issues = "#21999");
++		result = serviceContext.getResult().getNumberOfCreatedRecord(
++			this.apisDataset
++				.getTable(ApisPaths._Apis_TestDriving_TestData_InputOutputData.getPathInSchema()));
++		assertEquals(0, result);
++
++		//for update
++		result = serviceContext.getResult().getNumberOfUpdatedRecord(
++			this.apisDataset.getTable(
++				ApisPaths._Apis_TestDriving_TestConfiguration_CampaignDefinition
++					.getPathInSchema()));
++		assertEquals(1, result);
++		//@Reproduce(Issues = "##21933")
++		result = serviceContext.getResult().getNumberOfUpdatedRecord(
++			this.apisDataset.getTable(
++				ApisPaths._Apis_TestDriving_TestConfiguration_Scenario.getPathInSchema()));
++		assertEquals(1, result);
++		//@Reproduce(Issues = "#21938")
++		result = serviceContext.getResult().getNumberOfUpdatedRecord(
++			this.apisDataset
++				.getTable(ApisPaths._Apis_TestDriving_TestConfiguration_Step.getPathInSchema()));
++		assertEquals(1, result);
++		result = serviceContext.getResult().getNumberOfUpdatedRecord(
++			this.apisDataset.getTable(
++				ApisPaths._Apis_TestDriving_TestConfiguration_ScenarioUsesOrderStep
++					.getPathInSchema()));
++		assertEquals(0, result);
++		//@Reproduce(Issues = "#21596");
++		result = serviceContext.getResult().getNumberOfUpdatedRecord(
++			this.apisDataset.getTable(
++				ApisPaths._Apis_TestDriving_TestData_InputOutputContext.getPathInSchema()));
++		assertEquals(1, result);
++		//@Reproduce(Issues = "#21999");
++		result = serviceContext.getResult().getNumberOfUpdatedRecord(
++			this.apisDataset
++				.getTable(ApisPaths._Apis_TestDriving_TestData_InputOutputData.getPathInSchema()));
++		assertEquals(0, result);
++
++		Map<SheetName, Map<Integer, RowIssues>> rowIssues = serviceContext.getResult()
++			.getRowIssues();
++		Collection<RowIssues> campaignRowIssues = rowIssues.get(SheetName.CAMPAIGN).values();
++		boolean prefixCampaign = false;
++		boolean campaignCode = false;
++		boolean campaignCodeInScenario = false;
++		boolean scenarioCode = false;
++		boolean scenarioCodeInStep = false;
++		boolean stepCode = false;
++		boolean keyIoContext = false;
++		boolean referenceDataspace = false;
++		boolean referenceDataset = false;
++		boolean isRefUserCompatibleType = false;
++		boolean isMainFeatureCompatibleType = false;
++		boolean isSecondaryFeatureCompatibleType = false;
++		boolean isMantisIdentifierCompatibleType = false;
++		boolean isReferDataspaceExistInScenario = false;
++		boolean isReferDatasetExistInScenario = false;
++		boolean isReferTableExist = false;
++		boolean isValidRecord = true;
++		boolean isInitialDatabaseCorrect = false;
++		boolean isInputDataCorrect = true;
++		boolean isScenarioCreated = false;
++		boolean isCreateOrUpdate = false;
++		boolean isMessageForIoDataOrderOrInputData = false;
++		boolean isValidOnVersionScenario = false;
++		boolean isValidOnVersionStep = false;
++		boolean isDuplicateValidOnVersionScenario = false;
++		boolean isDuplicateOnVersionStep = false;
++
++		String refeDataspace = "A";
++		String refeDataset = "B";
++
++		assertEquals(5, campaignRowIssues.size());
++		for (RowIssues campaignRow : campaignRowIssues)
++		{
++			if (this.checkValid(
++				campaignRow,
++				3,
++				"Code",
++				ApisErrorMessages.get_Test_Configuration_Import_Testcase_Design_Empty()))
++			{
++				campaignCode = true;
++			}
++			if (this.checkValid(
++				campaignRow,
++				4,
++				"Code",
++				ApisErrorMessages.get_Test_Configuration_Import_Testcase_Design_Campaign_Prefix()))
++			{
++				prefixCampaign = true;
++			}
++			//check reference data space and reference data set
++			if (this.checkValid(
++				campaignRow,
++				5,
++				"Reference data space",
++				ApisErrorMessages
++					.get_Message_Error_Import_Test_Case_Not_Found_Dataspace(refeDataspace)))
++			{
++				referenceDataspace = true;
++			}
++			if (this.checkValid(
++				campaignRow,
++				6,
++				"Reference data set",
++				ApisErrorMessages
++					.get_Message_Error_Import_Test_Case_Not_Found_Dataset(refeDataset)))
++			{
++				referenceDataset = true;
++			}
++			//@Reproduce(Issues = "#21927")
++			if (this.checkValid(
++				campaignRow,
++				7,
++				"Initial database",
++				ApisErrorMessages.get_Message_Error_Import_Test_Case_Type_Format_Is_Not_Correct()))
++			{
++				isInitialDatabaseCorrect = true;
++			}
++		}
++		Collection<RowIssues> scenarioRowIssues = rowIssues.get(SheetName.SCENARIO).values();
++		assertEquals(11, scenarioRowIssues.size());
++		for (RowIssues scenarioCaseRow : scenarioRowIssues)
++		{
++			//@Evolution(Ids = "#26222")
++			if (this.checkValid(
++				scenarioCaseRow,
++				4,
++				"Valid on version",
++				ApisErrorMessages
++					.get_Test_Configuration_Import_Testcase_Design_Input_Not_Compatible()))
++			{
++				isValidOnVersionScenario = true;
++			}
++			if (this.checkValid(
++				scenarioCaseRow,
++				6,
++				"Campaign code",
++				ApisErrorMessages.get_Test_Configuration_Import_Testcase_Design_Empty()))
++			{
++				campaignCodeInScenario = true;
++			}
++			if (this.checkValid(
++				scenarioCaseRow,
++				5,
++				"Scenario code",
++				ApisErrorMessages.get_Test_Configuration_Import_Testcase_Design_Empty()))
++			{
++				scenarioCode = true;
++			}
++			//@Reproduce(Issues = "#21730, #21960")
++			if (this.checkValid(
++				scenarioCaseRow,
++				8,
++				"Ref user profile",
++				ApisErrorMessages
++					.get_Test_Configuration_Import_Testcase_Design_Input_Not_Compatible()))
++			{
++				isRefUserCompatibleType = true;
++			}
++			if (this.checkValid(
++				scenarioCaseRow,
++				9,
++				"Main feature",
++				ApisErrorMessages
++					.get_Test_Configuration_Import_Testcase_Design_Input_Not_Compatible()))
++			{
++				isMainFeatureCompatibleType = true;
++			}
++			if (this.checkValid(
++				scenarioCaseRow,
++				14,
++				"Secondary feature",
++				ApisErrorMessages
++					.get_Test_Configuration_Import_Testcase_Design_Input_Not_Compatible()))
++			{
++				isSecondaryFeatureCompatibleType = true;
++			}
++			//@Reproduce(Issues = "#21928")
++			if (this.checkValid(
++				scenarioCaseRow,
++				11,
++				"Mantis identifier",
++				ApisErrorMessages
++					.get_Test_Configuration_Import_Testcase_Design_Input_Not_Compatible()))
++			{
++				isMantisIdentifierCompatibleType = true;
++			}
++			if (this.checkValid(
++				scenarioCaseRow,
++				12,
++				"Reference data space",
++				ApisErrorMessages.get_Message_Error_Import_Test_Case_Not_Found_Dataspace("a")))
++			{
++				isReferDataspaceExistInScenario = true;
++			}
++			if (this.checkValid(
++				scenarioCaseRow,
++				13,
++				"Reference data set",
++				ApisErrorMessages.get_Message_Error_Import_Test_Case_Not_Found_Dataset("a")))
++			{
++				isReferDatasetExistInScenario = true;
++			}
++			if (this.checkValid(
++				scenarioCaseRow,
++				15,
++				"Valid on version",
++				ApisErrorMessages
++					.get_Test_Configuration_Import_Testcase_Design_Input_Not_Compatible()))
++			{
++				isDuplicateValidOnVersionScenario = true;
++			}
++		}
++		Collection<RowIssues> stepRowIssues = rowIssues.get(SheetName.STEP).values();
++		assertEquals(4, stepRowIssues.size());
++		for (RowIssues stepCaseRow : stepRowIssues)
++		{
++			if (this.checkValid(
++				stepCaseRow,
++				14,
++				"Scenario code",
++				ApisErrorMessages
++					.get_Test_Configuration_Import_Testcase_Design_Scenario_Not_Exit()))
++			{
++				scenarioCodeInStep = true;
++			}
++			if (this.checkValid(
++				stepCaseRow,
++				15,
++				"Code",
++				ApisErrorMessages.get_Test_Configuration_Import_Testcase_Design_Empty()))
++			{
++				stepCode = true;
++			}
++
++			if (this.checkValid(
++				stepCaseRow,
++				16,
++				"Valid on version",
++				ApisErrorMessages
++					.get_Test_Configuration_Import_Testcase_Design_Input_Not_Compatible()))
++			{
++				isValidOnVersionStep = true;
++			}
++
++			if (this.checkValid(
++				stepCaseRow,
++				17,
++				"Valid on version",
++				ApisErrorMessages
++					.get_Test_Configuration_Import_Testcase_Design_Input_Not_Compatible()))
++			{
++				isDuplicateOnVersionStep = true;
++			}
++
++		}
++		Collection<RowIssues> ioContextRowIssues = rowIssues.get(SheetName.IO_CONTEXT).values();
++		assertEquals(12, ioContextRowIssues.size());
++		for (RowIssues ioContextCaseRow : ioContextRowIssues)
++		{
++			if (this.checkValid(
++				ioContextCaseRow,
++				6,
++				ImportSheetHandler.CAMPAIGN_OR_SCENARIO_OR_STEP,
++				ApisErrorMessages
++					.get_Test_Configuration_Import_Testcase_Design_Does_Not_Have_Relation()))
++			{
++				keyIoContext = true;
++			}
++		}
++		//@Reproduce(Issues = "#21835, #21706, #21724")
++		Collection<RowIssues> ioDataRowIssues = rowIssues.get(SheetName.IO_DATA).values();
++		int i = 0;
++		assertEquals(8, ioDataRowIssues.size());
++		for (RowIssues ioDataCaseRow : ioDataRowIssues)
++		{
++			i++;
++			if (this.checkValid(
++				ioDataCaseRow,
++				3,
++				"Table",
++				ApisErrorMessages.get_Message_Error_Import_Test_Case_Not_Found_Table()))
++			{
++				isReferTableExist = true;
++			}
++			//@Reproduce(Issues = "#23525")
++			if (this.checkValid(
++				ioDataCaseRow,
++				9,
++				"Record",
++				ApisErrorMessages
++					.get_Test_Configuration_Import_Testcase_Design_Input_Not_Compatible()))
++			{
++				isValidRecord = false;
++			}
++			if ("Input data".equals(ioDataCaseRow.getColName()) && (i == 3))
++			{
++				isInputDataCorrect = false;
++			}
++			//@Reproduce(Issues = "#21934")
++			if (this.checkValid(
++				ioDataCaseRow,
++				4,
++				"Order",
++				ApisErrorMessages
++					.get_Test_Configuration_Import_Testcase_Design_Input_Not_Compatible())
++				|| this.checkValid(
++					ioDataCaseRow,
++					8,
++					"Input Data",
++					ApisErrorMessages
++						.get_Test_Configuration_Import_Testcase_Design_Input_Not_Compatible()))
++			{
++				isMessageForIoDataOrderOrInputData = true;
++			}
++		}
++		//@Evolution(Ids ="#29552")
++		assertTrue(isDuplicateValidOnVersionScenario);
++		assertTrue(isDuplicateOnVersionStep);
++		//@Evolution(Ids ="#26222")
++		assertTrue(isValidOnVersionScenario);
++		assertTrue(isValidOnVersionStep);
++		//@Reproduce(Issues = "#23525")
++		assertTrue(isValidRecord);
++		//@Reproduce(Issues = "#21934")
++		assertFalse(isMessageForIoDataOrderOrInputData);
++		//@Evolution(Ids = "#21835")
++		assertTrue(isReferTableExist);
++		//@Reproduce(Issues = "#21730")
++		assertTrue(isRefUserCompatibleType);
++		//@Reproduce(Issues = "#21682")
++		assertTrue(referenceDataset);
++		//@Reproduce(Issues = "#21682")
++		//correcting
++		assertTrue(referenceDataspace);
++		assertTrue(prefixCampaign);
++		assertTrue(campaignCode);
++		assertTrue(campaignCodeInScenario);
++		assertTrue(scenarioCode);
++		assertTrue(scenarioCodeInStep);
++		assertTrue(stepCode);
++		assertTrue(keyIoContext);
++		//@Reproduce(Issues = "#21960")
++		assertTrue(isRefUserCompatibleType);
++		assertTrue(isMainFeatureCompatibleType);
++		assertTrue(isSecondaryFeatureCompatibleType);
++		assertTrue(isReferDataspaceExistInScenario);
++		assertTrue(isReferDatasetExistInScenario);
++		//@Reproduce(Issues = "#21927")
++		assertTrue(isInitialDatabaseCorrect);
++		//@Reproduce(Issues = "#21928")
++		assertTrue(isMantisIdentifierCompatibleType);
++		//@Reproduce(Issues = "#21974")
++		assertTrue(isInputDataCorrect);
++		//check date field of campaign definition and scenario
++		//@Reproduce(Issues = "#21576")
++		Calendar expectDate = Calendar.getInstance();
++		expectDate.set(Calendar.MINUTE, 0);
++		expectDate.set(Calendar.HOUR_OF_DAY, 0);
++		expectDate.set(Calendar.SECOND, 0);
++		expectDate.set(Calendar.MILLISECOND, 0);
++		AdaptationTable campaignTable = this.apisDataset.getTable(
++			ApisPaths._Apis_TestDriving_TestConfiguration_CampaignDefinition.getPathInSchema());
++		String GET_CAMPAIGN_KEY_FROM_CODE = ApisPaths._Apis_TestDriving_TestConfiguration_CampaignDefinition._Code
++			.format() + " = {0}";
++		String requestCampaign = ApisRequestManager
++			.getRequest(GET_CAMPAIGN_KEY_FROM_CODE, "CP-Addon-Apis");
++		RequestResult campaignResults = campaignTable.createRequestResult(requestCampaign);
++		Adaptation campaignResult;
++		try
++		{
++			if ((campaignResult = campaignResults.nextAdaptation()) != null)
++			{
++				Date creatDate = campaignResult.getDate(
++					ApisPaths._Apis_TestDriving_TestConfiguration_CampaignDefinition._Time);
++				assertEquals(1, expectDate.getTime().compareTo(creatDate));
++			}
++		}
++		finally
++		{
++			campaignResults.close();
++		}
++		AdaptationTable scenarioTable = this.apisDataset
++			.getTable(ApisPaths._Apis_TestDriving_TestConfiguration_Scenario.getPathInSchema());
++		//@Reproduce(Issues = "#21593")
++		// check date field of campaign definition and scenario when campain or scenario is created
++
++		String requestNewCampaign = ApisRequestManager
++			.getRequest(GET_CAMPAIGN_KEY_FROM_CODE, "CPNew1");
++		RequestResult campaignNewResults = campaignTable.createRequestResult(requestNewCampaign);
++		Adaptation campaignNewResult;
++		try
++		{
++			if ((campaignNewResult = campaignNewResults.nextAdaptation()) != null)
++			{
++				Date creatDate = campaignNewResult.getDate(
++					ApisPaths._Apis_TestDriving_TestConfiguration_CampaignDefinition._Time);
++				assertNotNull(creatDate);
++			}
++		}
++		finally
++		{
++			campaignNewResults.close();
++		}
++		String GET_SCENARIO_KEY_FROM_CODE = ApisPaths._Apis_TestDriving_TestConfiguration_Scenario._Code
++			.format() + " = {0}";
++		String requestNewScenario = ApisRequestManager
++			.getRequest(GET_SCENARIO_KEY_FROM_CODE, "SCAP169");
++		RequestResult scenarioNewResults = scenarioTable.createRequestResult(requestNewScenario);
++		Adaptation scenarioNewResult;
++		try
++		{
++			if ((scenarioNewResult = scenarioNewResults.nextAdaptation()) != null)
++			{
++				Date creatDate = scenarioNewResult
++					.getDate(ApisPaths._Apis_TestDriving_TestConfiguration_Scenario._CreationDate);
++				assertNotNull(creatDate);
++				isScenarioCreated = true;
++				//@Evolution(Ids ="#26222")
++				List<String> scenarioValidVersions = scenarioNewResult.getList(
++					ApisPaths._Apis_TestDriving_TestConfiguration_Scenario._FKValidVersion);
++				assertEquals(2, scenarioValidVersions.size());
++			}
++		}
++		finally
++		{
++			scenarioNewResults.close();
++		}
++		//@Reproduce(Issues = "#21957, 21933)
++		assertTrue(isScenarioCreated);
++		AdaptationTable ioDataContextTable = this.apisDataset
++			.getTable(ApisPaths._Apis_TestDriving_TestData_InputOutputContext.getPathInSchema());
++		AdaptationTable ioDataTable = this.apisDataset
++			.getTable(ApisPaths._Apis_TestDriving_TestData_InputOutputData.getPathInSchema());
++		String request = ApisPaths._Apis_TestDriving_TestData_InputOutputContext._FKCampaignDefinition
++			.format() + " = '272' and "
++			+ ApisPaths._Apis_TestDriving_TestData_InputOutputContext._FKScenario.format()
++			+ " = '66438' and "
++			+ ApisPaths._Apis_TestDriving_TestData_InputOutputContext._FKStep.format()
++			+ " = '610458'";
++		RequestResult ioContextResults = ioDataContextTable.createRequestResult(request);
++		Adaptation ioDataContextNewResult;
++		Integer oidContext = new Integer(0);
++		try
++		{
++			if ((ioDataContextNewResult = ioContextResults.nextAdaptation()) != null)
++			{
++				oidContext = (Integer) ioDataContextNewResult
++					.get(ApisPaths._Apis_TestDriving_TestData_InputOutputContext._Oid);
++			}
++		}
++		finally
++		{
++			ioContextResults.close();
++		}
++		if (oidContext.compareTo(Integer.valueOf(0)) > 0)
++		{
++			String requestIOData = ApisPaths._Apis_TestDriving_TestData_InputOutputData._FKInputOutputContext
++				.format() + " = '" + oidContext.toString() + "'";
++			RequestResult ioDataResults = ioDataTable.createRequestResult(requestIOData);
++			Adaptation ioDataResult;
++			try
++			{
++				if ((ioDataResult = ioDataResults.nextAdaptation()) != null)
++				{
++					Integer order = (Integer) ioDataResult
++						.get(ApisPaths._Apis_TestDriving_TestData_InputOutputData._OrderCtx);
++					if (order.compareTo(Integer.valueOf(1)) == 0)
++					{
++						isCreateOrUpdate = true;
++					}
++				}
++			}
++			finally
++			{
++				ioDataResults.close();
++			}
++			assertTrue(isCreateOrUpdate);
++		}
++
++	}
++	private boolean checkValid(
++		RowIssues testCaseRow,
++		int rowCheck,
++		String ColumnCheck,
++		UserMessage messageCheck)
++	{
++		return testCaseRow.getRowNumber().intValue() == rowCheck
++			&& testCaseRow.getColName().equals(ColumnCheck)
++			&& testCaseRow.getIssueMessage().formatMessage(this.session.getLocale()).equals(
++				messageCheck.formatMessage(this.session.getLocale()));
++	}
++	@Reproduce(Issues = "#21575, #21910")
++	public void testImportFile()
++	{
++		//check fimport file type
++		File sourceFile = new File("./src-tests/resources/archives/apis.ebx");
++		ImportSpreadsheetServiceContext serviceContext = new ImportSpreadsheetServiceContext();
++		serviceContext.setImportSpreadsheetSpec(
++			new ImportSpreadsheetSpec(ImportMode.INSERT_OR_UPDATE, sourceFile));
++		serviceContext.setEntitySelection(new DataSetEntitySelectionImpl(this.apisDataset));
++		ImportSpreadsheetProcedure importTestCaseProcedure = new ImportTestCaseProcedure(
++			serviceContext);
++		ProgrammaticService ps = ProgrammaticService
++			.createForSession(this.session, this.apisDataset.getHome());
++		ProcedureResult pr = ps.execute(importTestCaseProcedure);
++		assertFalse(pr.hasFailed());
++		//@Reproduce(Issues = "#21910")
++		sourceFile = new File("./src-tests/resources/archives/ImportTestCaseTemplate.xls");
++		serviceContext = new ImportSpreadsheetServiceContext();
++		serviceContext.setImportSpreadsheetSpec(
++			new ImportSpreadsheetSpec(ImportMode.INSERT_OR_UPDATE, sourceFile));
++		serviceContext.setEntitySelection(new DataSetEntitySelectionImpl(this.apisDataset));
++		importTestCaseProcedure = new ImportTestCaseProcedure(serviceContext);
++		ps = ProgrammaticService.createForSession(this.session, this.apisDataset.getHome());
++		pr = ps.execute(importTestCaseProcedure);
++		assertNull(pr.getExceptionFullMessage(ApisConstant.DEFAULT_LOCALE));
++		//check import file that has file type changed manually
++		sourceFile = new File(
++			"./src-tests/resources/archives/ImportTestCaseTemplateFormatChangedManually.xls");
++		serviceContext = new ImportSpreadsheetServiceContext();
++		serviceContext.setImportSpreadsheetSpec(
++			new ImportSpreadsheetSpec(ImportMode.INSERT_OR_UPDATE, sourceFile));
++		serviceContext.setEntitySelection(new DataSetEntitySelectionImpl(this.apisDataset));
++		importTestCaseProcedure = new ImportTestCaseProcedure(serviceContext);
++		ps = ProgrammaticService.createForSession(this.session, this.apisDataset.getHome());
++		pr = ps.execute(importTestCaseProcedure);
++		assertNull(pr.getExceptionFullMessage(ApisConstant.DEFAULT_LOCALE));
++		//check import file that miss one sheet
++		sourceFile = new File(
++			"./src-tests/resources/archives/ImportTestCaseTemplateMissingSheet.xls");
++		serviceContext = new ImportSpreadsheetServiceContext();
++		serviceContext.setImportSpreadsheetSpec(
++			new ImportSpreadsheetSpec(ImportMode.INSERT_OR_UPDATE, sourceFile));
++		serviceContext.setEntitySelection(new DataSetEntitySelectionImpl(this.apisDataset));
++		importTestCaseProcedure = new ImportTestCaseProcedure(serviceContext);
++		ps = ProgrammaticService.createForSession(this.session, this.apisDataset.getHome());
++		pr = ps.execute(importTestCaseProcedure);
++		assertNull(pr.getExceptionFullMessage(ApisConstant.DEFAULT_LOCALE));
++		//Check missing column
++		sourceFile = new File("./src-tests/resources/archives/ImportTestCaseWithMissingColunm.xls");
++		serviceContext = new ImportSpreadsheetServiceContext();
++		serviceContext.setImportSpreadsheetSpec(
++			new ImportSpreadsheetSpec(ImportMode.INSERT_OR_UPDATE, sourceFile));
++		serviceContext.setEntitySelection(new DataSetEntitySelectionImpl(this.apisDataset));
++		importTestCaseProcedure = new ImportTestCaseProcedure(serviceContext);
++		ps = ProgrammaticService.createForSession(this.session, this.apisDataset.getHome());
++		pr = ps.execute(importTestCaseProcedure);
++		assertNull(pr.getExceptionFullMessage(ApisConstant.DEFAULT_LOCALE));
++	}
++}
+Index: src/com/orchestranetworks/addon/apis/accessrule/AccessRuleFactory.java
+===================================================================
+RCS file: /home/cvs/addon-apis/src/com/orchestranetworks/addon/apis/accessrule/AccessRuleFactory.java,v
+retrieving revision 1.59
+diff -u -r1.59 AccessRuleFactory.java
+--- src/com/orchestranetworks/addon/apis/accessrule/AccessRuleFactory.java	30 Jan 2018 03:41:50 -0000	1.59
++++ src/com/orchestranetworks/addon/apis/accessrule/AccessRuleFactory.java	31 Jan 2018 11:46:02 -0000
+@@ -167,9 +167,10 @@
+ 					return AccessPermission.getReadWrite();
+ 				}
+ 
++				List<String> list = adaptation
++					.<String> getList(ApisPaths._Apis_EngineeringDomain_Sprint._SprintOwners);
+ 				Set<String> productOwners = new HashSet<String>(
+-					adaptation
+-						.<String> getList(ApisPaths._Apis_EngineeringDomain_Sprint._SprintOwners));
++					list);
+ 				productOwners
+ 					.add(adaptation.getString(ApisPaths._Apis_EngineeringDomain_Sprint._Leader));
+ 				if (productOwners.contains(aSession.getUserReference().getUserId()))
+Index: src/com/orchestranetworks/addon/apis/cache/TestTypeTableIndex.java
+===================================================================
+RCS file: /home/cvs/addon-apis/src/com/orchestranetworks/addon/apis/cache/TestTypeTableIndex.java,v
+retrieving revision 1.7
+diff -u -r1.7 TestTypeTableIndex.java
+--- src/com/orchestranetworks/addon/apis/cache/TestTypeTableIndex.java	26 Jan 2018 08:33:24 -0000	1.7
++++ src/com/orchestranetworks/addon/apis/cache/TestTypeTableIndex.java	31 Jan 2018 11:46:02 -0000
+@@ -30,6 +30,7 @@
+ 		TestTypeBean bean = this.cachePK_Bean.get(name);
+ 		return bean == null ? ApisConstant.EMPTY_STRING : bean.getName();
+ 	}
++
+ 	public Set<String> getAllTestTypeNames()
+ 	{
+ 		return Collections.unmodifiableSet(this.cachePK_Bean.keySet());
+Index: src/com/orchestranetworks/addon/apis/common/ApisConstant.java
+===================================================================
+RCS file: /home/cvs/addon-apis/src/com/orchestranetworks/addon/apis/common/ApisConstant.java,v
+retrieving revision 1.266
+diff -u -r1.266 ApisConstant.java
+--- src/com/orchestranetworks/addon/apis/common/ApisConstant.java	30 Jan 2018 03:41:50 -0000	1.266
++++ src/com/orchestranetworks/addon/apis/common/ApisConstant.java	31 Jan 2018 11:46:02 -0000
+@@ -119,6 +119,7 @@
+ 		public static final String STATE_TITLE_ROADMAP = "MMMM dd, yyyy";
+ 		public static final String MANTIS = "yyyy-MM-dd";
+ 		public static final String DATE_TIME = "MMMM dd, yyyy HH:mm:ss";
++		public static final String EXECUTION_DATE = "mm/dd/yyyy";
+ 
+ 		public static final String DEFAULT_DATE_TIME_FORMAT_FOR_READ = "yyyy-MM-dd HH:mm:ss";
+ 		public static final String DEFAULT_DATE_FORMAT_FOR_READ = "MM-dd-yyyy";
+@@ -142,7 +143,6 @@
+ 
+ 	public static final String EXTENSION_EXCEL_2003 = ".xls";
+ 	public static final String EXTENSION_TEAM_PROJECT_SET = ".psf";
+-	public static final String TEST_TYPE_AUTOMATICALLY = "Automatically";
+ 	public static final String DISPLAY_VIRTUAL_COLUMN_CAMPAIGN_CUSTOMIZER = "Apis_displayVirtualColumnCustomizer";
+ 	public static final String DISPLAY_VIRTUAL_COLUMN_SCENARIO_IN_CAMPAIGN_CUSTOMIZER = "Apis_displayVirtualColumnScenarioInCampaignCustomizer";
+ 	public static final int NUMBER_OF_LINE_LIMIT = 3;
+@@ -330,4 +330,18 @@
+ 		public static final String ORANGE_COLOR_CODE = "#FF8800";
+ 		public static final String GRAY_COLOR_CODE = "#E6E6E6";
+ 	}
++
++	public static class TEST_RESULT
++	{
++		public static final String PASS = "Pass";
++		public static final String PASS_VALUE = "OK";
++		public static final String FAILED = "Failed";
++		public static final String FAILED_VALUE = "KO";
++	}
++
++	public static class TEST_TYPE
++	{
++		public static final String MANUALLY = "Manually";
++		public static final String AUTOMATICALLY = "Automatically";
++	}
+ }
+Index: src/com/orchestranetworks/addon/apis/common/ApisRequestManager.java
+===================================================================
+RCS file: /home/cvs/addon-apis/src/com/orchestranetworks/addon/apis/common/ApisRequestManager.java,v
+retrieving revision 1.166
+diff -u -r1.166 ApisRequestManager.java
+--- src/com/orchestranetworks/addon/apis/common/ApisRequestManager.java	24 Jan 2018 06:42:30 -0000	1.166
++++ src/com/orchestranetworks/addon/apis/common/ApisRequestManager.java	31 Jan 2018 11:46:02 -0000
+@@ -190,8 +190,6 @@
+ 		.format() + " = {0} and date-equal("
+ 		+ ApisPaths._Apis_EngineeringDomain_Sprint._GaDate.format() + ",{1})";
+ 
+-	public static final String GET_EBX_VERSIONS = CompanyPaths._Reality_Product_ProductVersion._Type
+-		.format() + "={0}";
+ 	public static final String GET_FK_PRODUCT = CompanyPaths._Reality_Product_ProductVersion._FKProduct
+ 		.format() + "={0}";
+ 
+@@ -224,9 +222,9 @@
+ 			.format() + " = {0}";
+ 	}
+ 
+-	public static class TestDataRequest
++	public static class FreeFormCaseRequest
+ 	{
+-		public static final String GET_INPUT_OUPUT_DATA_WITH_DISPLAY_VALUE_IS_NULL = "osd:is-null("
+-			+ ApisPaths._Apis_TestDriving_TestData_InputOutputData._IsDisplay.format() + ")";
++		public static final String GET_FREE_FORM_CASE_BY_FK_STEP = ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkStep
++			.format() + " = {0}";
+ 	}
+ }
+Index: src/com/orchestranetworks/addon/apis/i18n/ApisErrorMessages.java
+===================================================================
+RCS file: /home/cvs/addon-apis/src/com/orchestranetworks/addon/apis/i18n/ApisErrorMessages.java,v
+retrieving revision 1.235
+diff -u -r1.235 ApisErrorMessages.java
+--- src/com/orchestranetworks/addon/apis/i18n/ApisErrorMessages.java	26 Jan 2018 03:40:12 -0000	1.235
++++ src/com/orchestranetworks/addon/apis/i18n/ApisErrorMessages.java	31 Jan 2018 11:46:02 -0000
+@@ -543,6 +543,17 @@
+ 		Object[] ps = new Object[0];
+ 		return new UserMessageRefXML(Severity.ERROR, PMessage_Error_Import_Test_Case_Column_Label, BASE_NAME, ps, CLASS_LOADER);
+ 	}
++	public static final String PMessage_Error_Import_Test_Case_NoConstraint = "message.error.import.test.case.noConstraint";
++	/**
++	 *  [There is no constraint between '{0}' and '{1}']
++	 */
++	public static UserMessageRef get_Message_Error_Import_Test_Case_NoConstraint(Object p0, Object p1)
++	{
++		Object[] ps = new Object[2];
++		ps[0] = p0;
++		ps[1] = p1;
++		return new UserMessageRefXML(Severity.ERROR, PMessage_Error_Import_Test_Case_NoConstraint, BASE_NAME, ps, CLASS_LOADER);
++	}
+ 	public static final String PMessage_Error_Import_Test_Case_Reason_Label = "message.error.import.test.case.reason.label";
+ 	/**
+ 	 *  [Reason]
+@@ -1170,6 +1181,24 @@
+ 		Object[] ps = new Object[0];
+ 		return new UserMessageRefXML(Severity.ERROR, PService_Export_Roadmap_Do_Not_Select_Option_Error, BASE_NAME, ps, CLASS_LOADER);
+ 	}
++	public static final String PService_Import_FreeFormCase_Incorrect_Format = "service.import.freeFormCase.incorrect.format";
++	/**
++	 *  [The free form case design uses an incorrect template format or has an issue.]
++	 */
++	public static UserMessageRef get_Service_Import_FreeFormCase_Incorrect_Format()
++	{
++		Object[] ps = new Object[0];
++		return new UserMessageRefXML(Severity.ERROR, PService_Import_FreeFormCase_Incorrect_Format, BASE_NAME, ps, CLASS_LOADER);
++	}
++	public static final String PService_Import_FreeFormCase_Prefix = "service.import.freeFormCase.prefix";
++	/**
++	 *  [Code has to have FF as the prefix.]
++	 */
++	public static UserMessageRef get_Service_Import_FreeFormCase_Prefix()
++	{
++		Object[] ps = new Object[0];
++		return new UserMessageRefXML(Severity.ERROR, PService_Import_FreeFormCase_Prefix, BASE_NAME, ps, CLASS_LOADER);
++	}
+ 	public static final String PService_Test_Changestatusofignoredscenariostep_NotPermission = "service.test.changestatusofignoredscenariostep.notPermission";
+ 	/**
+ 	 *  [The service is not available because scenarios or steps are not ignored.]
+Index: src/com/orchestranetworks/addon/apis/i18n/ApisInfoMessages.java
+===================================================================
+RCS file: /home/cvs/addon-apis/src/com/orchestranetworks/addon/apis/i18n/ApisInfoMessages.java,v
+retrieving revision 1.227
+diff -u -r1.227 ApisInfoMessages.java
+--- src/com/orchestranetworks/addon/apis/i18n/ApisInfoMessages.java	29 Jan 2018 09:57:46 -0000	1.227
++++ src/com/orchestranetworks/addon/apis/i18n/ApisInfoMessages.java	31 Jan 2018 11:46:02 -0000
+@@ -3264,6 +3264,24 @@
+ 		Object[] ps = new Object[0];
+ 		return new UserMessageRefXML(Severity.INFO, PService_Test_IgnoreStep_Label, BASE_NAME, ps, CLASS_LOADER);
+ 	}
++	public static final String PService_Test_Import_FreeFormCase_Description = "service.test.import.freeFormCase.description";
++	/**
++	 *  [Service to import the check list for monkey test into the Free form case table.]
++	 */
++	public static UserMessageRef get_Service_Test_Import_FreeFormCase_Description()
++	{
++		Object[] ps = new Object[0];
++		return new UserMessageRefXML(Severity.INFO, PService_Test_Import_FreeFormCase_Description, BASE_NAME, ps, CLASS_LOADER);
++	}
++	public static final String PService_Test_Import_FreeFormCase_Label = "service.test.import.freeFormCase.label";
++	/**
++	 *  [Import free form case]
++	 */
++	public static UserMessageRef get_Service_Test_Import_FreeFormCase_Label()
++	{
++		Object[] ps = new Object[0];
++		return new UserMessageRefXML(Severity.INFO, PService_Test_Import_FreeFormCase_Label, BASE_NAME, ps, CLASS_LOADER);
++	}
+ 	public static final String PService_Test_SetPassAllStep_Confirmation = "service.test.setPassAllStep.confirmation";
+ 	/**
+ 	 *  [All the corresponding Detailed test results for Steps within the selected Scenario test report will be set to Pass, and correspondingly, the statuses of this test report will be Pass. Do you want to proceed?]
+Index: src/com/orchestranetworks/addon/apis/i18n/apisErrorMessages.mxml
+===================================================================
+RCS file: /home/cvs/addon-apis/src/com/orchestranetworks/addon/apis/i18n/apisErrorMessages.mxml,v
+retrieving revision 1.66
+diff -u -r1.66 apisErrorMessages.mxml
+--- src/com/orchestranetworks/addon/apis/i18n/apisErrorMessages.mxml	26 Jan 2018 03:40:12 -0000	1.66
++++ src/com/orchestranetworks/addon/apis/i18n/apisErrorMessages.mxml	31 Jan 2018 11:46:03 -0000
+@@ -62,6 +62,7 @@
+ <entry key="message.error.import.test.case.Row.label">Row</entry>
+ <entry key="message.error.import.test.case.Sheet.name.label">Sheet name</entry>
+ <entry key="message.error.import.test.case.type.format.is.not.correct">Type format is not a valid Excel file type.</entry>
++<entry key="message.error.import.test.case.noConstraint">There is no constraint between '{0}' and '{1}'</entry>
+ <entry key="message.error.incorrect.workflow.configuration">Incorrect workflow configuration.</entry>
+ <entry key="message.error.invalid.feature">Invalid feature.</entry>
+ <entry key="message.error.invalid.mantis.requirement">Mantis category does not match the associated feature.</entry>
+@@ -131,6 +132,8 @@
+ <entry key="service.testReport.assign.email.template.notDefined">Email template is not defined.</entry>
+ <entry key="service.testReport.created.same.product.build">You must select those reports that are created from the same product build.</entry>
+ <entry key="service.testReport.do.not.select.final.report">In order to run, 'Create/Update final test report', select test reports that are not final reports of the same product build.</entry>
++<entry key="service.import.freeFormCase.incorrect.format">The free form case design uses an incorrect template format or has an issue.</entry>
++<entry key="service.import.freeFormCase.prefix">Code has to have FF as the prefix.</entry>
+ <entry key="sprint.start.date.empty.constraint">Start date must not be empty.</entry>
+ <entry key="support.to.import.only.xsl.or.xslx.file">You can only import an XLS or XLSX file.</entry>
+ <entry key="test.assignment.scenario.not.same.campaign">You can only be assigned test reports from the same campaign execution.</entry>
+Index: src/com/orchestranetworks/addon/apis/i18n/apisErrorMessages_fr.mxml
+===================================================================
+RCS file: /home/cvs/addon-apis/src/com/orchestranetworks/addon/apis/i18n/apisErrorMessages_fr.mxml,v
+retrieving revision 1.64
+diff -u -r1.64 apisErrorMessages_fr.mxml
+--- src/com/orchestranetworks/addon/apis/i18n/apisErrorMessages_fr.mxml	26 Jan 2018 03:40:12 -0000	1.64
++++ src/com/orchestranetworks/addon/apis/i18n/apisErrorMessages_fr.mxml	31 Jan 2018 11:46:03 -0000
+@@ -62,6 +62,7 @@
+ <entry key="message.error.import.test.case.Row.label">Row</entry>
+ <entry key="message.error.import.test.case.Sheet.name.label">Sheet name</entry>
+ <entry key="message.error.import.test.case.type.format.is.not.correct">Type format is not a valid Excel file type.</entry>
++<entry key="message.error.import.test.case.noConstraint">There is no constraint between '{0}' and '{1}'</entry>
+ <entry key="message.error.incorrect.workflow.configuration">Incorrect workflow configuration.</entry>
+ <entry key="message.error.invalid.feature">Invalid feature.</entry>
+ <entry key="message.error.invalid.mantis.requirement">Mantis category does not match the associated feature.</entry>
+@@ -131,6 +132,8 @@
+ <entry key="service.testReport.assign.email.template.notDefined">Email template is not defined.</entry>
+ <entry key="service.testReport.created.same.product.build">You must select those reports that are created from the same product build.</entry>
+ <entry key="service.testReport.do.not.select.final.report">In order to run, 'Create/Update final test report', select test reports that are not final reports of the same product build.</entry>
++<entry key="service.import.freeFormCase.incorrect.format">The free form case design uses an incorrect template format or has an issue.</entry>
++<entry key="service.import.freeFormCase.prefix">Code has to have FF as the prefix.</entry>
+ <entry key="sprint.start.date.empty.constraint">Start date must not be empty.</entry>
+ <entry key="support.to.import.only.xsl.or.xslx.file">You can only import an XLS or XLSX file.</entry>
+ <entry key="test.assignment.scenario.not.same.campaign">You can only be assigned test reports from the same campaign execution.</entry>
+Index: src/com/orchestranetworks/addon/apis/i18n/apisInfoMessages.mxml
+===================================================================
+RCS file: /home/cvs/addon-apis/src/com/orchestranetworks/addon/apis/i18n/apisInfoMessages.mxml,v
+retrieving revision 1.82
+diff -u -r1.82 apisInfoMessages.mxml
+--- src/com/orchestranetworks/addon/apis/i18n/apisInfoMessages.mxml	29 Jan 2018 09:57:46 -0000	1.82
++++ src/com/orchestranetworks/addon/apis/i18n/apisInfoMessages.mxml	31 Jan 2018 11:46:03 -0000
+@@ -328,6 +328,8 @@
+ <entry key="service.test.switchStep.toNA.label">Switch step(s) to N/A</entry>
+ <entry key="service.test.switchStep.toPass.description">Sets the selected step(s) to Pass.</entry>
+ <entry key="service.test.switchStep.toPass.label">Switch step(s) to Pass</entry>
++<entry key="service.test.import.freeFormCase.label">Import free form case</entry>
++<entry key="service.test.import.freeFormCase.description">Service to import the check list for monkey test into the Free form case table.</entry>
+ <entry key="switch.to.test.view.service.description">Displays a view showing test scenarios, detailed I/O steps and test reports.</entry>
+ <entry key="switch.to.test.view.service.label">Switch to full test view</entry>
+ <entry key="table.name">{0} view</entry>
+Index: src/com/orchestranetworks/addon/apis/i18n/apisInfoMessages_fr.mxml
+===================================================================
+RCS file: /home/cvs/addon-apis/src/com/orchestranetworks/addon/apis/i18n/apisInfoMessages_fr.mxml,v
+retrieving revision 1.79
+diff -u -r1.79 apisInfoMessages_fr.mxml
+--- src/com/orchestranetworks/addon/apis/i18n/apisInfoMessages_fr.mxml	29 Jan 2018 09:57:46 -0000	1.79
++++ src/com/orchestranetworks/addon/apis/i18n/apisInfoMessages_fr.mxml	31 Jan 2018 11:46:03 -0000
+@@ -328,6 +328,8 @@
+ <entry key="service.test.switchStep.toNA.label">Switch step(s) to N/A</entry>
+ <entry key="service.test.switchStep.toPass.description">Sets the selected step(s) to Pass.</entry>
+ <entry key="service.test.switchStep.toPass.label">Switch step(s) to Pass</entry>
++<entry key="service.test.import.freeFormCase.label">Import free form case</entry>
++<entry key="service.test.import.freeFormCase.description">Service to import the check list for monkey test into the Free form case table.</entry>
+ <entry key="switch.to.test.view.service.description">Displays a view showing test scenarios, detailed I/O steps and test reports.</entry>
+ <entry key="switch.to.test.view.service.label">Switch to full test view</entry>
+ <entry key="table.name">{0} view</entry>
+Index: src/com/orchestranetworks/addon/apis/module/ApisRegisterAddon.java
+===================================================================
+RCS file: /home/cvs/addon-apis/src/com/orchestranetworks/addon/apis/module/ApisRegisterAddon.java,v
+retrieving revision 1.90
+diff -u -r1.90 ApisRegisterAddon.java
+--- src/com/orchestranetworks/addon/apis/module/ApisRegisterAddon.java	30 Jan 2018 03:41:50 -0000	1.90
++++ src/com/orchestranetworks/addon/apis/module/ApisRegisterAddon.java	31 Jan 2018 11:46:03 -0000
+@@ -14,6 +14,7 @@
+ import com.orchestranetworks.addon.apis.i18n.*;
+ import com.orchestranetworks.addon.apis.services.migration.*;
+ import com.orchestranetworks.addon.apis.ui.views.*;
++import com.orchestranetworks.addon.apis.userservice.importtest.importfreeformcase.*;
+ import com.orchestranetworks.addon.apis.userservice.importtest.importliteralspecification.*;
+ import com.orchestranetworks.addon.apis.userservice.importtest.importtestcase.*;
+ import com.orchestranetworks.instance.*;
+@@ -27,6 +28,7 @@
+ 	{
+ 		context.registerUserService(new ImportTestCaseDeclaration());
+ 		context.registerUserService(new ImportLiteralSpecificationDeclaration());
++		context.registerUserService(new ImportFreeFormCaseDeclaration());
+ 	}
+ 
+ 	public String getAddonBuildNumber()
+Index: src/com/orchestranetworks/addon/apis/userservice/importtest/ImportSpreadsheetProcedure.java
+===================================================================
+RCS file: /home/cvs/addon-apis/src/com/orchestranetworks/addon/apis/userservice/importtest/ImportSpreadsheetProcedure.java,v
+retrieving revision 1.4
+diff -u -r1.4 ImportSpreadsheetProcedure.java
+--- src/com/orchestranetworks/addon/apis/userservice/importtest/ImportSpreadsheetProcedure.java	30 Jan 2018 09:35:47 -0000	1.4
++++ src/com/orchestranetworks/addon/apis/userservice/importtest/ImportSpreadsheetProcedure.java	31 Jan 2018 11:46:03 -0000
+@@ -110,6 +110,11 @@
+ 				ApisPaths._Apis_TestDriving_TestConfiguration_ScenarioLiteral.getPathInSchema());
+ 			result.initImportedResult(scenarioInLiteralTable);
+ 			break;
++		case FREE_FORM_CASE:
++			AdaptationTable freeFormCaseTable = this.dataset
++				.getTable(ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase.getPathInSchema());
++			result.initImportedResult(freeFormCaseTable);
++			break;
+ 		default:
+ 			break;
+ 		}
+Index: src/com/orchestranetworks/addon/apis/userservice/importtest/ImportSpreadsheetResultUI.java
+===================================================================
+RCS file: /home/cvs/addon-apis/src/com/orchestranetworks/addon/apis/userservice/importtest/ImportSpreadsheetResultUI.java,v
+retrieving revision 1.4
+diff -u -r1.4 ImportSpreadsheetResultUI.java
+--- src/com/orchestranetworks/addon/apis/userservice/importtest/ImportSpreadsheetResultUI.java	30 Jan 2018 09:35:47 -0000	1.4
++++ src/com/orchestranetworks/addon/apis/userservice/importtest/ImportSpreadsheetResultUI.java	31 Jan 2018 11:46:03 -0000
+@@ -45,7 +45,6 @@
+ 			{
+ 				this.printResult(writer, result);
+ 			}
+-
+ 		}
+ 		finally
+ 		{
+@@ -53,9 +52,9 @@
+ 		}
+ 	}
+ 
+-	public abstract UserMessageRef getImportFailedMessage();
++	public abstract UserMessage getImportFailedMessage();
+ 
+-	public abstract UserMessageRef getInvalidTemplateMessage();
++	public abstract UserMessage getInvalidTemplateMessage();
+ 
+ 	protected UserMessage getSubmitButtonLabel()
+ 	{
+Index: src/com/orchestranetworks/addon/apis/userservice/importtest/ImportSpreadsheetWaitingUI.java
+===================================================================
+RCS file: /home/cvs/addon-apis/src/com/orchestranetworks/addon/apis/userservice/importtest/ImportSpreadsheetWaitingUI.java,v
+retrieving revision 1.2
+diff -u -r1.2 ImportSpreadsheetWaitingUI.java
+--- src/com/orchestranetworks/addon/apis/userservice/importtest/ImportSpreadsheetWaitingUI.java	30 Jan 2018 09:35:47 -0000	1.2
++++ src/com/orchestranetworks/addon/apis/userservice/importtest/ImportSpreadsheetWaitingUI.java	31 Jan 2018 11:46:03 -0000
+@@ -3,7 +3,6 @@
+  */
+ package com.orchestranetworks.addon.apis.userservice.importtest;
+ 
+-import com.orchestranetworks.addon.apis.i18n.*;
+ import com.orchestranetworks.addon.apis.userservice.util.ServiceConstants.*;
+ import com.orchestranetworks.addon.common.userservice.*;
+ import com.orchestranetworks.ui.*;
+@@ -26,6 +25,6 @@
+ 
+ 	protected UIFormLabelSpec getTitlePage()
+ 	{
+-		return new UIFormLabelSpec(ApisInfoMessages.get_Import_Test_Case());
++		return null;
+ 	}
+ }
+Index: src/com/orchestranetworks/addon/apis/userservice/importtest/importfreeformcase/FreeFormCaseSheetHandler.java
+===================================================================
+RCS file: src/com/orchestranetworks/addon/apis/userservice/importtest/importfreeformcase/FreeFormCaseSheetHandler.java
+diff -N src/com/orchestranetworks/addon/apis/userservice/importtest/importfreeformcase/FreeFormCaseSheetHandler.java
+--- /dev/null	1 Jan 1970 00:00:00 -0000
++++ src/com/orchestranetworks/addon/apis/userservice/importtest/importfreeformcase/FreeFormCaseSheetHandler.java	1 Jan 1970 00:00:00 -0000
+@@ -0,0 +1,718 @@
++/*
++ * Copyright Orchestra Networks 2000-2012. All rights reserved.
++ */
++package com.orchestranetworks.addon.apis.userservice.importtest.importfreeformcase;
++
++import java.text.*;
++import java.util.*;
++
++import com.onwbp.adaptation.*;
++import com.orchestranetworks.addon.apis.bean.*;
++import com.orchestranetworks.addon.apis.binding.*;
++import com.orchestranetworks.addon.apis.cache.*;
++import com.orchestranetworks.addon.apis.common.*;
++import com.orchestranetworks.addon.apis.common.ApisConstant.*;
++import com.orchestranetworks.addon.apis.enumeration.*;
++import com.orchestranetworks.addon.apis.i18n.*;
++import com.orchestranetworks.addon.apis.pattern.*;
++import com.orchestranetworks.addon.apis.userservice.importtest.*;
++import com.orchestranetworks.addon.common.util.*;
++import com.orchestranetworks.addon.utils.*;
++import com.orchestranetworks.schema.*;
++import com.orchestranetworks.service.*;
++
++/**
++ */
++public final class FreeFormCaseSheetHandler extends ImportSheetHandler
++{
++	private static final String CODE = "Code";
++	private static final String PRODUCT_BUILD = "Product build";
++	private static final String FEATURE = "Feature";
++	private static final String DETAIL_FEATURE = "Detail feature";
++	private static final String LITERAL_CODE = "Literal code";
++	private static final String CAMPAIGN_CODE = "Campaign code";
++	private static final String SCENARIO_CODE = "Scenario code";
++	private static final String STEP_CODE = "Step code";
++	private static final String FREE_FORM_CASE = "Free form case";
++	private static final String TESTER = "Tester";
++	private static final String EXECUTION_DATE = "Execution date";
++	private static final String TEST_RESULT = "Test result";
++	private static final String MANTIS_IDENTIFIER = "Mantis identifier";
++	private static final String NOTE = "Note";
++
++	private final AdaptationTable freeFormCaseTable;
++	private final AdaptationTable stepTable;
++	private final AdaptationTable inputOutputContextTable;
++	private final AdaptationTable stepInScenarioTable;
++	private final AdaptationTable inputOutputDataTable;
++	private final AdaptationTable campaignExecutionTable;
++	private final AdaptationTable testReportTable;
++	private final AdaptationTable detailedTestReportTable;
++	private final AdaptationTable scenarioLiteralTable;
++	private final AdaptationTable failedStepsAndBugsTable;
++	private boolean isExistStep = false;
++
++	public FreeFormCaseSheetHandler(
++		ProcedureContext pContext,
++		Adaptation dataset,
++		Map<Integer, String> headers,
++		ImportSpreadsheetResult result,
++		ImportMode importMode)
++	{
++		super(pContext, dataset, headers, result, importMode);
++		this.freeFormCaseTable = this.dataset
++			.getTable(ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase.getPathInSchema());
++		this.stepTable = this.dataset
++			.getTable(ApisPaths._Apis_TestDriving_TestConfiguration_Step.getPathInSchema());
++		this.stepInScenarioTable = this.dataset.getTable(
++			ApisPaths._Apis_TestDriving_TestConfiguration_ScenarioUsesOrderStep.getPathInSchema());
++		this.scenarioLiteralTable = this.dataset.getTable(
++			ApisPaths._Apis_TestDriving_TestConfiguration_ScenarioLiteral.getPathInSchema());
++		this.inputOutputContextTable = this.dataset
++			.getTable(ApisPaths._Apis_TestDriving_TestData_InputOutputContext.getPathInSchema());
++		this.inputOutputDataTable = this.dataset
++			.getTable(ApisPaths._Apis_TestDriving_TestData_InputOutputData.getPathInSchema());
++		this.campaignExecutionTable = this.dataset.getTable(
++			ApisPaths._Apis_TestDriving_TestExecution_CampaignExecution.getPathInSchema());
++		this.testReportTable = this.dataset
++			.getTable(ApisPaths._Apis_TestDriving_TestExecution_TestReport.getPathInSchema());
++		this.detailedTestReportTable = this.dataset.getTable(
++			ApisPaths._Apis_TestDriving_TestExecution_DetailedTestResult.getPathInSchema());
++		this.failedStepsAndBugsTable = this.dataset.getTable(
++			ApisPaths._Apis_TestDriving_TestExecution_ReferenceData_FailStepAndBug
++				.getPathInSchema());
++	}
++
++	protected SheetName getSheetName()
++	{
++		return SheetName.FREE_FORM_CASE;
++	}
++
++	protected void initHeaderMap()
++	{
++		this.isExistStep = false;
++		this.headerPathMapping
++			.put(CODE, ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._Code);
++		this.headerPathMapping.put(
++			PRODUCT_BUILD,
++			ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkProductBuild);
++		this.headerPathMapping
++			.put(FEATURE, ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkFeature);
++		this.headerPathMapping.put(
++			DETAIL_FEATURE,
++			ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._DetailFeature);
++		this.headerPathMapping.put(
++			LITERAL_CODE,
++			ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkLiteralSpecification);
++		this.headerPathMapping.put(
++			CAMPAIGN_CODE,
++			ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkCampaignDefinition);
++		this.headerPathMapping
++			.put(SCENARIO_CODE, ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkScenario);
++		this.headerPathMapping
++			.put(STEP_CODE, ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkStep);
++		this.headerPathMapping.put(
++			FREE_FORM_CASE,
++			ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FreeFormCase);
++		this.headerPathMapping
++			.put(TESTER, ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._Tester);
++		this.headerPathMapping.put(
++			EXECUTION_DATE,
++			ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._ExecutionDate);
++		this.headerPathMapping
++			.put(TEST_RESULT, ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._TestResult);
++		this.headerPathMapping.put(
++			MANTIS_IDENTIFIER,
++			ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkMantisIdentitier);
++		this.headerPathMapping
++			.put(NOTE, ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._Note);
++
++		this.uniqueFields.add(ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._Code);
++	}
++
++	public void startRow(int inRow)
++	{
++		this.vContext.clear();
++		this.vContext.put(
++			ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._Code,
++			ApisConstant.EMPTY_STRING);
++		this.vContext.put(
++			ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkProductBuild,
++			ApisConstant.EMPTY_STRING);
++		this.vContext.put(
++			ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkFeature,
++			ApisConstant.EMPTY_STRING);
++		this.vContext.put(
++			ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._DetailFeature,
++			ApisConstant.EMPTY_STRING);
++		this.vContext.put(
++			ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkLiteralSpecification,
++			ApisConstant.EMPTY_STRING);
++		this.vContext.put(
++			ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkCampaignDefinition,
++			ApisConstant.EMPTY_STRING);
++		this.vContext.put(
++			ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkScenario,
++			ApisConstant.EMPTY_STRING);
++		this.vContext.put(
++			ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FreeFormCase,
++			ApisConstant.EMPTY_STRING);
++		this.vContext.put(
++			ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._Tester,
++			ApisConstant.EMPTY_STRING);
++		this.vContext.put(
++			ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._ExecutionDate,
++			ApisConstant.EMPTY_STRING);
++		this.vContext.put(
++			ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._TestResult,
++			ApisConstant.EMPTY_STRING);
++		this.vContext.put(
++			ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkMantisIdentitier,
++			new ArrayList<String>());
++		this.vContext.put(
++			ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._Note,
++			ApisConstant.EMPTY_STRING);
++	}
++
++	public void endRow()
++	{
++		try
++		{
++			this.validate();
++			//Check Step code. If Step code does not exists, create new record in Step table.
++			String fkCampaign = (String) this.vContext
++				.get(ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkCampaignDefinition);
++			if (!this.isExistStep)
++			{
++				String fkScenario = (String) this.vContext
++					.get(ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkScenario);
++				String stepCode = (String) this.vContext
++					.get(ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkStep);
++				this.createNewStepAndRelateTable(fkCampaign, fkScenario, stepCode);
++			}
++			this.createOrUpdateRecord(this.freeFormCaseTable, this.vContext);
++			this.createTestExecution(fkCampaign);
++		}
++		catch (ImportSheetException ex)
++		{
++			this.addRowIssues(ex);
++			return;
++		}
++		catch (OperationException ex)
++		{
++			ApisLogger.logException(ex);
++		}
++	}
++
++	protected void validate() throws ImportSheetException
++	{
++		//Code cell
++		String code = (String) this.vContext
++			.get(ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._Code);
++		if (AddonStringUtils.isEmpty(code))
++		{
++			throw new ImportSheetException(
++				ApisErrorMessages.get_Test_Configuration_Import_Testcase_Design_Empty(),
++				CODE);
++		}
++		if (!code.startsWith(CODE_PREFIX.FREE_FORM_CASE))
++		{
++			throw new ImportSheetException(
++				ApisErrorMessages.get_Service_Import_FreeFormCase_Prefix(),
++				CODE);
++		}
++		//Product build cell
++		String productBuildLabel = (String) this.vContext
++			.get(ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkProductBuild);
++		if (AddonStringUtils.isEmpty(productBuildLabel))
++		{
++			throw new ImportSheetException(
++				ApisErrorMessages.get_Test_Configuration_Import_Testcase_Design_Empty(),
++				PRODUCT_BUILD);
++		}
++		//Feature cell
++		String featureLabel = (String) this.vContext
++			.get(ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkFeature);
++		if (!AddonStringUtils.isEmpty(featureLabel))
++		{
++			PrimaryKey featurePKCache = CacheManager.getInstance()
++				.getCacheFeatureTableIndex()
++				.getPrimaryKeyByLabel(featureLabel);
++			if (featurePKCache == null)
++			{
++				throw new ImportSheetException(
++					ApisErrorMessages.get_Test_Configuration_Import_Testcase_Design_Empty(),
++					FEATURE);
++			}
++		}
++		//Literal code cell
++		String fkLiteralCode = (String) this.vContext
++			.get(ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkLiteralSpecification);
++		if (!AddonStringUtils.isEmpty(fkLiteralCode))
++		{
++			if (CacheManager.getInstance()
++				.getCacheLiteralSpecificationTable()
++				.getBean(fkLiteralCode) == null)
++			{
++				throw new ImportSheetException(
++					ApisErrorMessages.get_Test_Configuration_Import_Testcase_Design_Empty(),
++					LITERAL_CODE);
++			}
++		}
++		//Campaign code cell
++		String fkCampaignCode = (String) this.vContext
++			.get(ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkCampaignDefinition);
++		if (AddonStringUtils.isEmpty(fkCampaignCode))
++		{
++			throw new ImportSheetException(
++				ApisErrorMessages.get_Test_Configuration_Import_Testcase_Design_Empty(),
++				CAMPAIGN_CODE);
++		}
++		//Scenario code cell
++		String fkScenarioCode = (String) this.vContext
++			.get(ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkScenario);
++		if (AddonStringUtils.isEmpty(fkScenarioCode))
++		{
++			throw new ImportSheetException(
++				ApisErrorMessages.get_Test_Configuration_Import_Testcase_Design_Empty(),
++				SCENARIO_CODE);
++		}
++		if (!CacheManager.getInstance()
++			.getCacheScenarioInCampaignTable()
++			.existRelation(fkCampaignCode, fkScenarioCode))
++		{
++			throw new ImportSheetException(
++				ApisErrorMessages.get_Message_Error_Import_Test_Case_NoConstraint(
++					fkCampaignCode,
++					fkScenarioCode),
++				SCENARIO_CODE);
++		}
++		if (!AddonStringUtils.isEmpty(fkLiteralCode))
++		{
++			if (ApisDataAccess.getInstance().getAdaptationByPrimaryKey(
++				this.scenarioLiteralTable,
++				new Object[] { fkLiteralCode, fkScenarioCode }) == null)
++			{
++				throw new ImportSheetException(
++					ApisErrorMessages.get_Message_Error_Import_Test_Case_NoConstraint(
++						fkLiteralCode,
++						fkScenarioCode),
++					SCENARIO_CODE);
++			}
++		}
++
++		//Step table
++		String fkStepCode = (String) this.vContext
++			.get(ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkStep);
++		if (AddonStringUtils.isEmpty(fkStepCode))
++		{
++			throw new ImportSheetException(
++				ApisErrorMessages.get_Test_Configuration_Import_Testcase_Design_Empty(),
++				STEP_CODE);
++		}
++		if (!this.isExistStep && !fkStepCode.startsWith(CODE_PREFIX.STEP))
++		{
++			throw new ImportSheetException(
++				ApisErrorMessages.get_Test_Configuration_Import_Testcase_Design_Step_Prefix(),
++				STEP_CODE);
++		}
++		if (this.isExistStep && !CacheManager.getInstance()
++			.getCacheStepInScenarioTable()
++			.existRelation(fkScenarioCode, fkStepCode))
++		{
++			throw new ImportSheetException(
++				ApisErrorMessages
++					.get_Message_Error_Import_Test_Case_NoConstraint(fkScenarioCode, fkStepCode),
++				STEP_CODE);
++		}
++		//Tester
++		String tester = (String) this.vContext
++			.get(ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._Tester);
++		if (AddonStringUtils.isEmpty(tester))
++		{
++			throw new ImportSheetException(
++				ApisErrorMessages.get_Test_Configuration_Import_Testcase_Design_Step_Prefix(),
++				TESTER);
++		}
++		Role testerSpecificRole = Profile.forSpecificRole(tester);
++		if (testerSpecificRole == null)
++		{
++			throw new ImportSheetException(
++				ApisErrorMessages.get_Test_Configuration_Import_Testcase_Design_Step_Prefix(),
++				TESTER);
++		}
++		//Date
++		Object executionDate = this.vContext
++			.get(ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._ExecutionDate);
++		if (executionDate == null)
++		{
++			throw new ImportSheetException(
++				ApisErrorMessages.get_Test_Configuration_Import_Testcase_Design_Empty(),
++				EXECUTION_DATE);
++		}
++		//Test result
++		String testResult = (String) this.vContext
++			.get(ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._TestResult);
++		if (AddonStringUtils.isEmpty(testResult))
++		{
++			throw new ImportSheetException(
++				ApisErrorMessages.get_Test_Configuration_Import_Testcase_Design_Empty(),
++				TEST_RESULT);
++		}
++	}
++
++	protected Object normalizeValue(int inRow, int inCol, String header, String inValue)
++		throws ImportSheetException
++	{
++		if (MANTIS_IDENTIFIER.equals(header))
++		{
++			String inValueWithoutCommaCharacter = inValue.trim()
++				.replaceAll(",", ApisConstant.CARRIAGE_RETURN_CHARACTER);
++			return this.getIdValues(inValueWithoutCommaCharacter, MANTIS_IDENTIFIER);
++		}
++		if (EXECUTION_DATE.equals(header))
++		{
++			SimpleDateFormat format = new SimpleDateFormat(
++				ApisConstant.DATE_FORMATS.EXECUTION_DATE);
++			try
++			{
++				return format.parse(inValue);
++			}
++			catch (ParseException ex)
++			{
++				return null;
++			}
++		}
++		SchemaNode node = this.freeFormCaseTable.getTableOccurrenceRootNode()
++			.getNode(this.headerPathMapping.get(header));
++		return node.parseXsString(inValue);
++	}
++
++	public void processCell(int inRow, int inCol, String header, String inValue)
++	{
++		//set row number
++		this.rowNumber = Integer.valueOf(inRow + 1);
++
++		if (PRODUCT_BUILD.equals(header))
++		{
++			PrimaryKey productBuildPK = CacheManager.getInstance()
++				.getCacheProductBuildTable()
++				.getPrimaryKeyByLabel(inValue);
++			if (productBuildPK != null)
++			{
++				this.vContext.put(
++					ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkProductBuild,
++					productBuildPK.format());
++			}
++			return;
++		}
++
++		if (FEATURE.equals(header))
++		{
++			PrimaryKey featurePK = CacheManager.getInstance()
++				.getCacheFeatureTableIndex()
++				.getPrimaryKeyByLabel(inValue);
++			if (featurePK != null)
++			{
++				this.vContext.put(
++					ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkFeature,
++					featurePK.format());
++			}
++			return;
++		}
++
++		if (CAMPAIGN_CODE.equals(header))
++		{
++			PrimaryKey campaignDefinitionPK = CacheManager.getInstance()
++				.getCacheCampaignTable()
++				.getPrimaryKey(inValue);
++			if (campaignDefinitionPK != null)
++			{
++				this.vContext.put(
++					ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkCampaignDefinition,
++					campaignDefinitionPK.format());
++			}
++			return;
++		}
++
++		if (SCENARIO_CODE.equals(header))
++		{
++			PrimaryKey scenarioPK = CacheManager.getInstance()
++				.getCacheScenarioTable()
++				.getPrimaryKey(inValue);
++			if (scenarioPK != null)
++			{
++				this.vContext.put(
++					ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkScenario,
++					scenarioPK.format());
++			}
++
++			return;
++		}
++		if (STEP_CODE.equals(header))
++		{
++			PrimaryKey stepPK = CacheManager.getInstance()
++				.getCacheStepTable()
++				.getPrimaryKey(inValue);
++			if (stepPK != null)
++			{
++				this.vContext.put(
++					ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkStep,
++					stepPK.format());
++				this.isExistStep = true;
++				return;
++			}
++		}
++
++		if (TEST_RESULT.equals(header))
++		{
++			if (ApisConstant.TEST_RESULT.PASS.equalsIgnoreCase(inValue))
++			{
++				this.vContext.put(
++					ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._TestResult,
++					ApisConstant.TEST_RESULT.PASS_VALUE);
++			}
++			else if (ApisConstant.TEST_RESULT.FAILED.equalsIgnoreCase(inValue))
++			{
++				this.vContext.put(
++					ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._TestResult,
++					ApisConstant.TEST_RESULT.FAILED_VALUE);
++			}
++			return;
++		}
++
++		super.processCell(inRow, inCol, header, inValue);
++	}
++
++	private void createNewStepAndRelateTable(String fkCampaing, String fkScenario, String stepCode)
++		throws ImportSheetException
++	{
++		//Create new step
++		String freeFormCase = (String) this.vContext
++			.get(ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FreeFormCase);
++		Map<Path, Object> valueStepNodes = new HashMap<Path, Object>();
++		valueStepNodes.put(ApisPaths._Apis_TestDriving_TestConfiguration_Step._Code, stepCode);
++		valueStepNodes
++			.put(ApisPaths._Apis_TestDriving_TestConfiguration_Step._Objective, freeFormCase);
++		valueStepNodes
++			.put(ApisPaths._Apis_TestDriving_TestConfiguration_Step._ShortObj, freeFormCase);
++		String fkStep = this.createOccurrence(valueStepNodes, this.stepTable, STEP_CODE);
++		this.vContext.put(ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkStep, fkStep);
++
++		//Create step in scenario
++		Map<Path, Object> valueNodes = new HashMap<Path, Object>();
++		valueNodes.put(
++			ApisPaths._Apis_TestDriving_TestConfiguration_ScenarioUsesOrderStep._FKScenario,
++			fkScenario);
++		valueNodes.put(
++			ApisPaths._Apis_TestDriving_TestConfiguration_ScenarioUsesOrderStep._FKStep,
++			fkStep);
++		valueNodes.put(
++			ApisPaths._Apis_TestDriving_TestConfiguration_ScenarioUsesOrderStep._Active,
++			Boolean.TRUE);
++		valueNodes.put(
++			ApisPaths._Apis_TestDriving_TestConfiguration_ScenarioUsesOrderStep._Order,
++			Integer.valueOf(
++				CacheManager.getInstance().getCacheStepInScenarioTable().getMaxOrder(fkScenario)
++					+ 1));
++		String joinStepInScenarioPK = this
++			.createOccurrence(valueNodes, this.stepInScenarioTable, STEP_CODE);
++		Adaptation joinStepInScenario = this.stepInScenarioTable
++			.lookupAdaptationByPrimaryKey(PrimaryKey.parseString(joinStepInScenarioPK));
++
++		//Create IO context
++		Map<Path, Object> valueIOContext = new HashMap<Path, Object>();
++		valueIOContext.put(
++			ApisPaths._Apis_TestDriving_TestData_InputOutputContext._FKCampaignDefinition,
++			fkCampaing);
++		int orderScenarioStep = joinStepInScenario
++			.get_int(ApisPaths._Apis_TestDriving_TestConfiguration_ScenarioUsesOrderStep._Order);
++		valueIOContext.put(
++			ApisPaths._Apis_TestDriving_TestData_InputOutputContext._ScenarioOrder,
++			Integer.valueOf(orderScenarioStep));
++		valueIOContext.put(
++			ApisPaths._Apis_TestDriving_TestData_InputOutputContext._StepOrder,
++			Integer.valueOf(orderScenarioStep));
++		valueIOContext.put(
++			ApisPaths._Apis_TestDriving_TestData_InputOutputContext._Order,
++			Integer.valueOf(
++				ApisCommonUtil.getInstance()
++					.calculationOrderInInputOutputContext(orderScenarioStep, orderScenarioStep)));
++		String fkInputOutputContext = this
++			.createOccurrence(valueIOContext, this.inputOutputContextTable, STEP_CODE);
++
++		//Create 2 Input output data records with context type Input and Output
++		ProcedureContext procedureContext = this.pContext;
++		procedureContext.setAllPrivileges(true);
++		procedureContext.setTriggerActivation(false);
++		try
++		{
++			Adaptation inputDataAdaptation = TestDataAccess.getInstance()
++				.createInputOutputDataAdaptation(
++					procedureContext,
++					this.dataset,
++					fkInputOutputContext,
++					ContextType.INPUT,
++					ApisConstant.EMPTY_STRING);
++			this.result.increaseCreatedRecord(this.inputOutputDataTable);
++			TestDataAccess.getInstance().createInputOutputDataAdaptation(
++				procedureContext,
++				this.dataset,
++				fkInputOutputContext,
++				ContextType.OUTPUT,
++				inputDataAdaptation.getOccurrencePrimaryKey().format());
++			this.result.increaseCreatedRecord(this.inputOutputDataTable);
++		}
++		catch (OperationException ex)
++		{
++			throw new ImportSheetException(
++				ApisErrorMessages
++					.get_Test_Configuration_Import_Testcase_Design_Input_Not_Compatible(),
++				STEP_CODE);
++		}
++	}
++
++	private void createTestExecution(String fkCampaign)
++		throws OperationException, ImportSheetException
++	{
++
++		this.pContext.setAllPrivileges(true);
++		this.pContext.setTriggerActivation(true);
++		// 1: create new CampaignExecution record
++		Map<Path, Object> valueCampaignExecutionNodes = new HashMap<Path, Object>();
++		valueCampaignExecutionNodes.put(
++			ApisPaths._Apis_TestDriving_TestExecution_CampaignExecution._FKCampaignDefinition,
++			fkCampaign);
++		String campaignExecutionPK = this
++			.createOccurrence(valueCampaignExecutionNodes, this.campaignExecutionTable, CODE);
++
++		//get active scenario by campaign definition ordered
++		List<ScenarioOrder> scenariosActiveOrdered = TestExecutionDataAccess.getInstance()
++			.getScenariosActiveByCampaignOrdered(fkCampaign, Boolean.TRUE);
++		if (scenariosActiveOrdered == null || scenariosActiveOrdered.isEmpty())
++		{
++			return;
++		}
++		//		 2: create new TestReport record(s) <-2.1: create new DetailedTestResult records
++		this.populateScenariosToTestReport(campaignExecutionPK, fkCampaign, scenariosActiveOrdered);
++	}
++
++	private void populateScenariosToTestReport(
++		String fkCampaignExecution,
++		String fkCampaignDefinition,
++		List<ScenarioOrder> scenarioOrders) throws ImportSheetException, OperationException
++	{
++		for (ScenarioOrder scenarioOrder : scenarioOrders)
++		{
++			//Create TestReport
++			Map<Path, Object> valueTestReportNodes = new HashMap<Path, Object>();
++			valueTestReportNodes.put(
++				ApisPaths._Apis_TestDriving_TestExecution_TestReport._FKCampaignExecution,
++				fkCampaignExecution);
++			valueTestReportNodes.put(
++				ApisPaths._Apis_TestDriving_TestExecution_TestReport._FKScenario,
++				scenarioOrder.getFkScenario());
++			valueTestReportNodes.put(
++				ApisPaths._Apis_TestDriving_TestExecution_TestReport._FKTestType,
++				CacheManager.getInstance()
++					.getCacheTestTypeTable()
++					.getPrimaryKey(ApisConstant.TEST_TYPE.AUTOMATICALLY)
++					.format());
++			valueTestReportNodes.put(
++				ApisPaths._Apis_TestDriving_TestExecution_TestReport._Order,
++				Integer.valueOf(scenarioOrder.getOrder()));
++			String fkTestReport = this
++				.createOccurrence(valueTestReportNodes, this.testReportTable, CODE);
++
++			//Create corresponding DetailedTestResult(s)
++			this.populateStepsToDetailedTestResult(
++				fkTestReport,
++				fkCampaignDefinition,
++				scenarioOrder.getFkScenario());
++		}
++	}
++
++	private void populateStepsToDetailedTestResult(
++		String fkTestReport,
++		String fkCampaignDefinition,
++		String fkScenario) throws ImportSheetException
++	{
++		Set<String> deactiveSteps = CacheManager.getInstance()
++			.getCacheScenarioInCampaignTable()
++			.getInactiveSteps(fkCampaignDefinition, fkScenario);
++		List<StepOrder> stepsActiveByScenario = TestExecutionDataAccess.getInstance()
++			.getStepsActiveByScenarioOrdered(fkScenario, Boolean.TRUE);
++		for (StepOrder stepOrder : stepsActiveByScenario)
++		{
++			if (deactiveSteps.contains(stepOrder.getFkStep()))
++			{
++				continue;
++			}
++			this.createDetailedTestResult(
++				fkTestReport,
++				stepOrder.getFkStep(),
++				Integer.valueOf(stepOrder.getOrder()));
++		}
++	}
++
++	private void createDetailedTestResult(String fkTestReport, String fkStep, Integer order)
++		throws ImportSheetException
++	{
++		Map<Path, Object> valueDetailedTestResultNodes = new HashMap<Path, Object>();
++		valueDetailedTestResultNodes.put(
++			ApisPaths._Apis_TestDriving_TestExecution_DetailedTestResult._FKTestReport,
++			fkTestReport);
++		valueDetailedTestResultNodes
++			.put(ApisPaths._Apis_TestDriving_TestExecution_DetailedTestResult._FKStep, fkStep);
++		valueDetailedTestResultNodes
++			.put(ApisPaths._Apis_TestDriving_TestExecution_DetailedTestResult._Order, order);
++		String detailedTestResultPK = this
++			.createOccurrence(valueDetailedTestResultNodes, this.detailedTestReportTable, CODE);
++
++		//Create failed steps and bugs
++		this.createFailedStepsAndBugs(fkStep, detailedTestResultPK);
++	}
++
++	private void createFailedStepsAndBugs(String fkStep, String fkDetailedTestResult)
++		throws ImportSheetException
++	{
++		String request = ApisRequestManager.getRequest(
++			ApisRequestManager.FreeFormCaseRequest.GET_FREE_FORM_CASE_BY_FK_STEP,
++			fkStep);
++		List<Adaptation> steps = DataAccessUtils.getInstance()
++			.getAdaptations(this.freeFormCaseTable, request);
++		if (steps == null || steps.isEmpty())
++		{
++			return;
++		}
++		for (Adaptation step : steps)
++		{
++			List<String> fkMantisSyns = step.<String> getList(
++				ApisPaths._Apis_TestDriving_TestExecution_FreeFormCase._FkMantisIdentitier);
++			if (fkMantisSyns == null || fkMantisSyns.isEmpty())
++			{
++				continue;
++			}
++			for (String fkMantisSyn : fkMantisSyns)
++			{
++				if (ApisDataAccess.getInstance().getAdaptationByPrimaryKey(
++					this.failedStepsAndBugsTable,
++					new Object[] { fkDetailedTestResult, fkMantisSyn }) == null)
++				{
++					continue;
++				}
++				Map<Path, Object> valueFailedStepsAndBugsNodes = new HashMap<Path, Object>();
++				valueFailedStepsAndBugsNodes.put(
++					ApisPaths._Apis_TestDriving_TestExecution_ReferenceData_FailStepAndBug._FkDetailedTestResult,
++					fkDetailedTestResult);
++				valueFailedStepsAndBugsNodes.put(
++					ApisPaths._Apis_TestDriving_TestExecution_ReferenceData_FailStepAndBug._FKMantisSyn,
++					fkMantisSyn);
++				this.createOccurrence(
++					valueFailedStepsAndBugsNodes,
++					this.failedStepsAndBugsTable,
++					CODE);
++			}
++		}
++	}
++}
+Index: src/com/orchestranetworks/addon/apis/userservice/importtest/importfreeformcase/ImportFreeFormCaseDeclaration.java
+===================================================================
+RCS file: src/com/orchestranetworks/addon/apis/userservice/importtest/importfreeformcase/ImportFreeFormCaseDeclaration.java
+diff -N src/com/orchestranetworks/addon/apis/userservice/importtest/importfreeformcase/ImportFreeFormCaseDeclaration.java
+--- /dev/null	1 Jan 1970 00:00:00 -0000
++++ src/com/orchestranetworks/addon/apis/userservice/importtest/importfreeformcase/ImportFreeFormCaseDeclaration.java	1 Jan 1970 00:00:00 -0000
+@@ -0,0 +1,57 @@
++/*
++ * Copyright Orchestra Networks 2000-2012. All rights reserved.
++ */
++package com.orchestranetworks.addon.apis.userservice.importtest.importfreeformcase;
++
++import com.orchestranetworks.addon.apis.common.ApisConstant.*;
++import com.orchestranetworks.addon.apis.i18n.*;
++import com.orchestranetworks.addon.apis.userservice.permission.*;
++import com.orchestranetworks.addon.apis.userservice.util.ServiceConstants.*;
++import com.orchestranetworks.schema.types.dataset.DatasetSet.*;
++import com.orchestranetworks.service.*;
++import com.orchestranetworks.ui.selection.*;
++import com.orchestranetworks.userservice.*;
++import com.orchestranetworks.userservice.declaration.*;
++import com.orchestranetworks.userservice.permission.*;
++
++/**
++ */
++public final class ImportFreeFormCaseDeclaration implements UserServiceDeclaration.OnDataset
++{
++
++	public UserService<DatasetEntitySelection> createUserService()
++	{
++		return new ImportFreeFormCaseService();
++	}
++
++	public void declareWebComponent(WebComponentDeclarationContext context)
++	{
++		context.setAvailableAsPerspectiveAction(true);
++	}
++
++	public void defineActivation(ActivationContextOnDataset context)
++	{
++		context.includeDatasetsMatching(DATASET_NAMES.APIS, DatasetChildrenPolicy.NONE);
++		context.setPermissionRule(new ServicePermissionRule<DatasetEntitySelection>()
++		{
++			public UserServicePermission getPermission(
++				ServicePermissionRuleContext<DatasetEntitySelection> servicePermissionContext)
++			{
++				return UserServicePermissionUtil.getInstance()
++					.getTesterServicePermission(servicePermissionContext.getSession());
++			}
++		});
++	}
++
++	public void defineProperties(UserServicePropertiesDefinitionContext context)
++	{
++		context.setLabel(ApisInfoMessages.get_Service_Test_Import_FreeFormCase_Label());
++		context.setDescription(ApisInfoMessages.get_Service_Test_Import_FreeFormCase_Description());
++	}
++
++	public ServiceKey getServiceKey()
++	{
++		return ImportSpreadsheet.IMPORT_FREE_FORM_CASE_SERVICE_KEY_MODULE;
++	}
++
++}
+Index: src/com/orchestranetworks/addon/apis/userservice/importtest/importfreeformcase/ImportFreeFormCaseProcedure.java
+===================================================================
+RCS file: src/com/orchestranetworks/addon/apis/userservice/importtest/importfreeformcase/ImportFreeFormCaseProcedure.java
+diff -N src/com/orchestranetworks/addon/apis/userservice/importtest/importfreeformcase/ImportFreeFormCaseProcedure.java
+--- /dev/null	1 Jan 1970 00:00:00 -0000
++++ src/com/orchestranetworks/addon/apis/userservice/importtest/importfreeformcase/ImportFreeFormCaseProcedure.java	1 Jan 1970 00:00:00 -0000
+@@ -0,0 +1,47 @@
++/*
++ * Copyright Orchestra Networks 2000-2012. All rights reserved.
++ */
++package com.orchestranetworks.addon.apis.userservice.importtest.importfreeformcase;
++
++import java.util.*;
++
++import com.onwbp.base.text.*;
++import com.orchestranetworks.addon.apis.enumeration.*;
++import com.orchestranetworks.addon.apis.i18n.*;
++import com.orchestranetworks.addon.apis.userservice.importtest.*;
++
++/**
++ */
++public final class ImportFreeFormCaseProcedure extends ImportSpreadsheetProcedure
++{
++
++	public ImportFreeFormCaseProcedure(ImportSpreadsheetServiceContext serviceContext)
++	{
++		super(serviceContext);
++	}
++
++	protected List<SheetName> getValidSheetNames()
++	{
++		return Arrays.asList(SheetName.FREE_FORM_CASE);
++	}
++
++	protected UserMessage getInvalidTemplateMessage()
++	{
++		return ApisErrorMessages.get_Service_Import_FreeFormCase_Incorrect_Format();
++	}
++
++	protected ImportSheetHandler getImportSheetHandler(SheetName sheetName)
++	{
++		if (sheetName.equals(SheetName.FREE_FORM_CASE))
++		{
++			return new FreeFormCaseSheetHandler(
++				this.pContext,
++				this.dataset,
++				this.headers,
++				this.serviceContext.getResult(),
++				this.serviceContext.getImportSpreadsheetSpec().getImportMode());
++		}
++		return null;
++	}
++
++}
+Index: src/com/orchestranetworks/addon/apis/userservice/importtest/importfreeformcase/ImportFreeFormCaseResultUI.java
+===================================================================
+RCS file: src/com/orchestranetworks/addon/apis/userservice/importtest/importfreeformcase/ImportFreeFormCaseResultUI.java
+diff -N src/com/orchestranetworks/addon/apis/userservice/importtest/importfreeformcase/ImportFreeFormCaseResultUI.java
+--- /dev/null	1 Jan 1970 00:00:00 -0000
++++ src/com/orchestranetworks/addon/apis/userservice/importtest/importfreeformcase/ImportFreeFormCaseResultUI.java	1 Jan 1970 00:00:00 -0000
+@@ -0,0 +1,31 @@
++/*
++ * Copyright Orchestra Networks 2000-2012. All rights reserved.
++ */
++package com.orchestranetworks.addon.apis.userservice.importtest.importfreeformcase;
++
++import com.onwbp.base.text.*;
++import com.orchestranetworks.addon.apis.i18n.*;
++import com.orchestranetworks.addon.apis.userservice.importtest.*;
++import com.orchestranetworks.ui.*;
++
++/**
++ */
++public final class ImportFreeFormCaseResultUI extends ImportSpreadsheetResultUI
++{
++
++	public UserMessage getImportFailedMessage()
++	{
++		return ApisErrorMessages.get_Service_Import_FreeFormCase_Incorrect_Format();
++	}
++
++	public UserMessage getInvalidTemplateMessage()
++	{
++		return ApisErrorMessages.get_Service_Import_FreeFormCase_Incorrect_Format();
++	}
++
++	protected UIFormLabelSpec getTitlePage()
++	{
++		return new UIFormLabelSpec(ApisInfoMessages.get_Service_Test_Import_FreeFormCase_Label());
++	}
++
++}
+Index: src/com/orchestranetworks/addon/apis/userservice/importtest/importfreeformcase/ImportFreeFormCaseService.java
+===================================================================
+RCS file: src/com/orchestranetworks/addon/apis/userservice/importtest/importfreeformcase/ImportFreeFormCaseService.java
+diff -N src/com/orchestranetworks/addon/apis/userservice/importtest/importfreeformcase/ImportFreeFormCaseService.java
+--- /dev/null	1 Jan 1970 00:00:00 -0000
++++ src/com/orchestranetworks/addon/apis/userservice/importtest/importfreeformcase/ImportFreeFormCaseService.java	1 Jan 1970 00:00:00 -0000
+@@ -0,0 +1,47 @@
++/*
++ * Copyright Orchestra Networks 2000-2012. All rights reserved.
++ */
++package com.orchestranetworks.addon.apis.userservice.importtest.importfreeformcase;
++
++import java.util.*;
++
++import com.onwbp.base.text.*;
++import com.orchestranetworks.addon.apis.common.*;
++import com.orchestranetworks.addon.apis.i18n.*;
++import com.orchestranetworks.addon.apis.userservice.importtest.*;
++import com.orchestranetworks.service.*;
++
++/**
++ */
++public final class ImportFreeFormCaseService extends ImportSpreadsheetService
++{
++
++	public static final int NUMBER_SHEET_IMPORT_FREE_FORM_CASE = 1;
++
++	protected int estimateCounter() throws Exception
++	{
++		return NUMBER_SHEET_IMPORT_FREE_FORM_CASE;
++	}
++
++	protected List<Procedure> getProcedures()
++	{
++		Procedure procedure = new ImportFreeFormCaseProcedure(this.serviceContext);
++		return Arrays.asList(procedure);
++	}
++
++	protected String getImportTemplateName()
++	{
++		return ApisConstant.TEMPLATE_NAME.IMPORT_FREE_FORM_CASE_TEMPLATE;
++	}
++
++	protected UserMessage getTitlePage()
++	{
++		return ApisInfoMessages.get_Service_Test_Import_FreeFormCase_Label();
++	}
++
++	protected ImportSpreadsheetResultUI getImportResultUI()
++	{
++		return new ImportFreeFormCaseResultUI();
++	}
++
++}
+Index: src/com/orchestranetworks/addon/apis/userservice/reporting/IndicatorByBuildComputation.java
+===================================================================
+RCS file: /home/cvs/addon-apis/src/com/orchestranetworks/addon/apis/userservice/reporting/IndicatorByBuildComputation.java,v
+retrieving revision 1.13
+diff -u -r1.13 IndicatorByBuildComputation.java
+--- src/com/orchestranetworks/addon/apis/userservice/reporting/IndicatorByBuildComputation.java	26 Jan 2018 08:33:25 -0000	1.13
++++ src/com/orchestranetworks/addon/apis/userservice/reporting/IndicatorByBuildComputation.java	31 Jan 2018 11:46:04 -0000
+@@ -175,7 +175,7 @@
+ 			.getTable(ApisPaths._Apis_TestDriving_TestExecution_TestReport.getPathInSchema());
+ 		PrimaryKey automaticallyTestTypePK = CacheManager.getInstance()
+ 			.getCacheTestTypeTable()
+-			.getPrimaryKey(ApisConstant.TEST_TYPE_AUTOMATICALLY);
++			.getPrimaryKey(ApisConstant.TEST_TYPE.AUTOMATICALLY);
+ 
+ 		if (automaticallyTestTypePK == null)
+ 		{
+Index: src/com/orchestranetworks/addon/apis/userservice/util/ServiceConstants.java
+===================================================================
+RCS file: /home/cvs/addon-apis/src/com/orchestranetworks/addon/apis/userservice/util/ServiceConstants.java,v
+retrieving revision 1.39
+diff -u -r1.39 ServiceConstants.java
+--- src/com/orchestranetworks/addon/apis/userservice/util/ServiceConstants.java	30 Jan 2018 09:35:53 -0000	1.39
++++ src/com/orchestranetworks/addon/apis/userservice/util/ServiceConstants.java	31 Jan 2018 11:46:04 -0000
+@@ -24,6 +24,10 @@
+ 		public static final ServiceKey IMPORT_LITERAL_SPECIFICATION_SERVICE_KEY_MODULE = ServiceKey
+ 			.forModuleServiceName(MODULE_NAME, "importLiteralSpecification");
+ 
++		//service key for import free form case service
++		public static final ServiceKey IMPORT_FREE_FORM_CASE_SERVICE_KEY_MODULE = ServiceKey
++			.forModuleServiceName(MODULE_NAME, "importFreeFormCaseServiceKey");
++
+ 		public static final ObjectKey _ImportSpreadsheetObj = ObjectKey.forName("importObj");
+ 		public static final Path _FileUpload = Path.parse("fileUpload");
+ 		public static final Path _ImportMode = Path.parse("importMode");
+@@ -545,7 +549,8 @@
+ 
+ 	public interface CreateEBXVersion
+ 	{
+-		public static final ServiceKey CREATE_EBX_VERSION_KEY = ServiceKey.forName("createEBXVersion");
++		public static final ServiceKey CREATE_EBX_VERSION_KEY = ServiceKey
++			.forName("createEBXVersion");
+ 		public static final ObjectKey OBJECT_KEY = ObjectKey.forName("EBXObj");
+ 		public static final Path _Product = Path.parse("product");
+ 		public static final Path _Version = Path.parse("version");
+Index: webapps/ebx-addon-apis/WEB-INF/ebx/schema/Apis.xsd
+===================================================================
+RCS file: /home/cvs/addon-apis/webapps/ebx-addon-apis/WEB-INF/ebx/schema/Apis.xsd,v
+retrieving revision 1.536
+diff -u -r1.536 Apis.xsd
+--- webapps/ebx-addon-apis/WEB-INF/ebx/schema/Apis.xsd	30 Jan 2018 09:35:52 -0000	1.536
++++ webapps/ebx-addon-apis/WEB-INF/ebx/schema/Apis.xsd	31 Jan 2018 11:46:07 -0000
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<!--XML schema generated from EBX5 DMA instance [reference=ebx-addon-apis] on Tue Jan 30 09:23:37 ICT 2018 by user [admin].-->
++<!--XML schema generated from EBX5 DMA instance [reference=apis] on Wed Jan 31 10:02:57 ICT 2018 by user [admin].-->
+ <xs:schema xmlns:osd="urn:ebx-schemas:common_1.0" xmlns:fmt="urn:ebx-schemas:format_1.0" xmlns:ebxbnd="urn:ebx-schemas:binding_1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ebxs="urn:ebx-schemas:session_1.0">
+     <xs:import namespace="urn:ebx-schemas:common_1.0" schemaLocation="http://schema.orchestranetworks.com/common_1.0.xsd"/>
+     <xs:import namespace="urn:ebx-schemas:session_1.0" schemaLocation="http://schema.orchestranetworks.com/session_1.0.xsd"/>
+@@ -5111,9 +5111,9 @@
+                                                             <xs:appinfo>
+                                                                 <osd:table>
+                                                                     <primaryKeys>/oid </primaryKeys>
+-                                                                    <defaultLabel>Mantis: ${./fkMantis} -  ${./testResult}</defaultLabel>
+-                                                                    <defaultLabel xml:lang="en-US">Mantis: ${./fkMantis} -  ${./testResult}</defaultLabel>
+-                                                                    <defaultLabel xml:lang="fr-FR">Mantis: ${./fkMantis} -  ${./testResult}</defaultLabel>
++                                                                    <defaultLabel>Mantis: ${./fkMantis} - ${./testResult}</defaultLabel>
++                                                                    <defaultLabel xml:lang="en-US">Mantis: ${./fkMantis} - ${./testResult}</defaultLabel>
++                                                                    <defaultLabel xml:lang="fr-FR">Mantis: ${./fkMantis} - ${./testResult}</defaultLabel>
+                                                                 </osd:table>
+                                                             </xs:appinfo>
+                                                         </xs:annotation>
+@@ -6033,36 +6033,36 @@
+                                                                     </xs:annotation>
+                                                                 </xs:element>
+                                                                 <xs:element name="code" minOccurs="1" maxOccurs="1">
+-                                                                                <xs:annotation>
+-                                                                                    <xs:documentation xml:lang="en-US">
++                                                                    <xs:annotation>
++                                                                        <xs:documentation xml:lang="en-US">
+                                                                             <osd:label>Code</osd:label>
+-                                                                                    </xs:documentation>
+-                                                                                    <xs:documentation xml:lang="fr-FR">
++                                                                        </xs:documentation>
++                                                                        <xs:documentation xml:lang="fr-FR">
+                                                                             <osd:label>Code</osd:label>
+-                                                                                    </xs:documentation>
+-                                                                                    <xs:appinfo>
+-                                                                                        <osd:otherFacets>
++                                                                        </xs:documentation>
++                                                                        <xs:appinfo>
++                                                                            <osd:otherFacets>
+                                                                                 <osd:constraint class="com.orchestranetworks.addon.apis.rule.test.FreeFormCaseCodePrefixConstraint"/>
+-                                                                                        </osd:otherFacets>
+-                                                                                    </xs:appinfo>
+-                                                                                </xs:annotation>
++                                                                            </osd:otherFacets>
++                                                                        </xs:appinfo>
++                                                                    </xs:annotation>
+                                                                     <xs:simpleType>
+                                                                         <xs:restriction base="xs:string">
+                                                                             <xs:maxLength value="10"/>
+                                                                         </xs:restriction>
+                                                                     </xs:simpleType>
+-                                                                            </xs:element>
++                                                                </xs:element>
+                                                                 <xs:element name="fkProductBuild" type="xs:string" minOccurs="1" maxOccurs="1">
+-                                                                                <xs:annotation>
+-                                                                                    <xs:documentation xml:lang="en-US">
++                                                                    <xs:annotation>
++                                                                        <xs:documentation xml:lang="en-US">
+                                                                             <osd:label>Product build</osd:label>
+-                                                                                    </xs:documentation>
+-                                                                                    <xs:documentation xml:lang="fr-FR">
++                                                                        </xs:documentation>
++                                                                        <xs:documentation xml:lang="fr-FR">
+                                                                             <osd:label>Product build</osd:label>
+-                                                                                    </xs:documentation>
+-                                                                                    <xs:appinfo>
+-                                                                                        <osd:otherFacets>
+-                                                                                            <osd:tableRef>
++                                                                        </xs:documentation>
++                                                                        <xs:appinfo>
++                                                                            <osd:otherFacets>
++                                                                                <osd:tableRef>
+                                                                                     <container>ebx-addon-apis-company</container>
+                                                                                     <tablePath>/root/Reality/Product/ProductBuilt</tablePath>
+                                                                                 </osd:tableRef>
+@@ -6070,7 +6070,7 @@
+                                                                         </xs:appinfo>
+                                                                     </xs:annotation>
+                                                                 </xs:element>
+-                                                                <xs:element name="fkFeature" type="xs:string" minOccurs="1" maxOccurs="1">
++                                                                <xs:element name="fkFeature" type="xs:string" minOccurs="0" maxOccurs="1">
+                                                                     <xs:annotation>
+                                                                         <xs:documentation xml:lang="en-US">
+                                                                             <osd:label>Feature</osd:label>
+@@ -6212,13 +6212,13 @@
+                                                                     </xs:annotation>
+                                                                     <xs:simpleType>
+                                                                         <xs:restriction base="xs:string">
+-                                                                            <xs:enumeration osd:label="Pass" value="Pass">
++                                                                            <xs:enumeration osd:label="Pass" value="OK">
+                                                                                 <xs:annotation>
+                                                                                     <xs:documentation xml:lang="en-US">Pass</xs:documentation>
+                                                                                     <xs:documentation xml:lang="fr-FR">Pass</xs:documentation>
+                                                                                 </xs:annotation>
+                                                                             </xs:enumeration>
+-                                                                            <xs:enumeration osd:label="Failed" value="Failed">
++                                                                            <xs:enumeration osd:label="Failed" value="KO">
+                                                                                 <xs:annotation>
+                                                                                     <xs:documentation xml:lang="en-US">Failed</xs:documentation>
+                                                                                     <xs:documentation xml:lang="fr-FR">Failed</xs:documentation>
+Index: webapps/ebx-addon-apis/WEB-INF/ebx/schema/Company.xsd
+===================================================================
+RCS file: /home/cvs/addon-apis/webapps/ebx-addon-apis/WEB-INF/ebx/schema/Company.xsd,v
+retrieving revision 1.92
+diff -u -r1.92 Company.xsd
+--- webapps/ebx-addon-apis/WEB-INF/ebx/schema/Company.xsd	26 Jan 2018 10:19:08 -0000	1.92
++++ webapps/ebx-addon-apis/WEB-INF/ebx/schema/Company.xsd	31 Jan 2018 11:46:07 -0000
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<!--XML schema generated from EBX5 DMA instance [reference=company] on Wed Jan 03 11:28:07 ICT 2018 by user [admin].-->
++<!--XML schema generated from EBX5 DMA instance [reference=company] on Wed Jan 31 09:08:36 ICT 2018 by user [admin].-->
+ <xs:schema xmlns:osd="urn:ebx-schemas:common_1.0" xmlns:fmt="urn:ebx-schemas:format_1.0" xmlns:ebxbnd="urn:ebx-schemas:binding_1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ebxs="urn:ebx-schemas:session_1.0">
+     <xs:import namespace="urn:ebx-schemas:common_1.0" schemaLocation="http://schema.orchestranetworks.com/common_1.0.xsd"/>
+     <xs:import namespace="urn:ebx-schemas:session_1.0" schemaLocation="http://schema.orchestranetworks.com/session_1.0.xsd"/>
+@@ -773,6 +773,8 @@
+                                                     <osd:table>
+                                                         <primaryKeys>/oid </primaryKeys>
+                                                         <defaultLabel>${./FKProductVersion} ${./identifier} ${./FKBuiltType}${./order}</defaultLabel>
++                                                        <defaultLabel xml:lang="en-US">${./FKProductVersion} ${./identifier} ${./FKBuiltType}${./order}</defaultLabel>
++                                                        <defaultLabel xml:lang="fr-FR">${./FKProductVersion} ${./identifier} ${./FKBuiltType}${./order}</defaultLabel>
+                                                     </osd:table>
+                                                 </xs:appinfo>
+                                             </xs:annotation>
