@@ -1,0 +1,118 @@
+### Eclipse Workspace Patch 1.0
+#P addon-apis
+Index: launches/Apis - Generate Documentation.launch
+===================================================================
+RCS file: /home/cvs/addon-apis/launches/Apis - Generate Documentation.launch,v
+retrieving revision 1.3
+diff -u -r1.3 Apis - Generate Documentation.launch
+--- launches/Apis - Generate Documentation.launch	8 Sep 2016 06:32:38 -0000	1.3
++++ launches/Apis - Generate Documentation.launch	6 Feb 2018 11:48:02 -0000
+@@ -15,7 +15,7 @@
+ <stringAttribute key="org.eclipse.debug.ui.target_debug_perspective" value="perspective_default"/>
+ <stringAttribute key="org.eclipse.debug.ui.target_run_perspective" value="perspective_default"/>
+ <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.ant.ui.AntClasspathProvider"/>
+-<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_71"/>
++<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_91"/>
+ <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.eclipse.ant.internal.launching.remote.InternalAntRunner"/>
+ <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="addon-apis"/>
+ <stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="${workspace_loc:/addon-apis/ant/buildDocumentation.xml}"/>
+Index: launches/Apis - Generate Junit Report.launch
+===================================================================
+RCS file: /home/cvs/addon-apis/launches/Apis - Generate Junit Report.launch,v
+retrieving revision 1.1
+diff -u -r1.1 Apis - Generate Junit Report.launch
+--- launches/Apis - Generate Junit Report.launch	5 Jan 2016 04:52:08 -0000	1.1
++++ launches/Apis - Generate Junit Report.launch	6 Feb 2018 11:48:02 -0000
+@@ -9,7 +9,7 @@
+ <listEntry value="1"/>
+ </listAttribute>
+ <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.ant.ui.AntClasspathProvider"/>
+-<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.6.0_45"/>
++<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_91"/>
+ <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.eclipse.ant.internal.launching.remote.InternalAntRunner"/>
+ <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="addon-apis"/>
+ <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.ant.ui.AntClasspathProvider"/>
+Index: launches/Apis - Generate Messages.launch
+===================================================================
+RCS file: /home/cvs/addon-apis/launches/Apis - Generate Messages.launch,v
+retrieving revision 1.2
+diff -u -r1.2 Apis - Generate Messages.launch
+--- launches/Apis - Generate Messages.launch	27 Aug 2015 08:28:24 -0000	1.2
++++ launches/Apis - Generate Messages.launch	6 Feb 2018 11:48:02 -0000
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+ <launchConfiguration type="org.eclipse.ant.AntLaunchConfigurationType">
+ <stringAttribute key="org.eclipse.ant.ui.ATTR_BUILD_SCOPE" value="${none}"/>
+-<booleanAttribute key="org.eclipse.ant.ui.DEFAULT_VM_INSTALL" value="false"/>
++<booleanAttribute key="org.eclipse.ant.ui.DEFAULT_VM_INSTALL" value="true"/>
+ <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+ <listEntry value="/addon-apis/ant/generateMessages.xml"/>
+ </listAttribute>
+@@ -15,7 +15,7 @@
+ <stringAttribute key="org.eclipse.debug.ui.target_debug_perspective" value="perspective_default"/>
+ <stringAttribute key="org.eclipse.debug.ui.target_run_perspective" value="perspective_default"/>
+ <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.ant.ui.AntClasspathProvider"/>
+-<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
++<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_91"/>
+ <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.eclipse.ant.internal.launching.remote.InternalAntRunner"/>
+ <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="addon-apis"/>
+ <stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="${workspace_loc:/addon-apis/ant/generateMessages.xml}"/>
+Index: launches/Apis Update addons bundle.launch
+===================================================================
+RCS file: /home/cvs/addon-apis/launches/Apis Update addons bundle.launch,v
+retrieving revision 1.1
+diff -u -r1.1 Apis Update addons bundle.launch
+--- launches/Apis Update addons bundle.launch	26 Nov 2015 03:19:29 -0000	1.1
++++ launches/Apis Update addons bundle.launch	6 Feb 2018 11:48:02 -0000
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+ <launchConfiguration type="org.eclipse.ant.AntLaunchConfigurationType">
+-<booleanAttribute key="org.eclipse.ant.ui.DEFAULT_VM_INSTALL" value="false"/>
++<booleanAttribute key="org.eclipse.ant.ui.DEFAULT_VM_INSTALL" value="true"/>
+ <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+ <listEntry value="/addon-apis/ant/updateAddons.xml"/>
+ </listAttribute>
+@@ -9,7 +9,7 @@
+ </listAttribute>
+ <stringAttribute key="org.eclipse.debug.ui.ATTR_CONSOLE_ENCODING" value="UTF-8"/>
+ <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.ant.ui.AntClasspathProvider"/>
+-<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
++<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_91"/>
+ <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.eclipse.ant.internal.launching.remote.InternalAntRunner"/>
+ <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="addon-apis"/>
+ <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.ant.ui.AntClasspathProvider"/>
+Index: webapps/ebx-addon-apis/WEB-INF/ebx/schema/Apis.xsd
+===================================================================
+RCS file: /home/cvs/addon-apis/webapps/ebx-addon-apis/WEB-INF/ebx/schema/Apis.xsd,v
+retrieving revision 1.541
+diff -u -r1.541 Apis.xsd
+--- webapps/ebx-addon-apis/WEB-INF/ebx/schema/Apis.xsd	6 Feb 2018 08:21:37 -0000	1.541
++++ webapps/ebx-addon-apis/WEB-INF/ebx/schema/Apis.xsd	6 Feb 2018 11:48:03 -0000
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<!--XML schema generated from EBX5 DMA instance [reference=ebx-addon-apis] on Tue Feb 06 14:40:50 ICT 2018 by user [admin].-->
++<!--XML schema generated from EBX5 DMA instance [reference=apis] on Tue Feb 06 17:46:13 ICT 2018 by user [admin].-->
+ <xs:schema xmlns:osd="urn:ebx-schemas:common_1.0" xmlns:fmt="urn:ebx-schemas:format_1.0" xmlns:ebxbnd="urn:ebx-schemas:binding_1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ebxs="urn:ebx-schemas:session_1.0">
+     <xs:import namespace="urn:ebx-schemas:common_1.0" schemaLocation="http://schema.orchestranetworks.com/common_1.0.xsd"/>
+     <xs:import namespace="urn:ebx-schemas:session_1.0" schemaLocation="http://schema.orchestranetworks.com/session_1.0.xsd"/>
+@@ -5874,7 +5874,7 @@
+                                                                         </xs:appinfo>
+                                                                     </xs:annotation>
+                                                                 </xs:element>
+-                                                                <xs:element name="code" minOccurs="1" maxOccurs="1">
++                                                                <xs:element name="code" type="xs:string" minOccurs="1" maxOccurs="1">
+                                                                     <xs:annotation>
+                                                                         <xs:documentation xml:lang="en-US">
+                                                                             <osd:label>Code</osd:label>
+@@ -5888,11 +5888,6 @@
+                                                                             </osd:otherFacets>
+                                                                         </xs:appinfo>
+                                                                     </xs:annotation>
+-                                                                    <xs:simpleType>
+-                                                                        <xs:restriction base="xs:string">
+-                                                                            <xs:maxLength value="10"/>
+-                                                                        </xs:restriction>
+-                                                                    </xs:simpleType>
+                                                                 </xs:element>
+                                                                 <xs:element name="fkProductBuild" type="xs:string" minOccurs="1" maxOccurs="1">
+                                                                     <xs:annotation>
